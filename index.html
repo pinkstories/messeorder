@@ -175,91 +175,23 @@
     fetch("kunden.json").then(res => res.json()).then(data => kunden = data);
     fetch("artikel.json").then(res => res.json()).then(data => artikel = data);
 
-    function startForm(isBestandskunde) {
-      document.getElementById("startScreen").classList.remove("visible");
-      document.getElementById("kundendaten").classList.add("visible");
-      document.getElementById("bestandskundeSection").style.display = isBestandskunde ? "block" : "none";
-      updateFortschritt(2);
-    }
-
-    function updateFortschritt(schritt) {
-      const balken = document.getElementById("fortschrittBalken");
-      const text = document.getElementById("fortschrittText");
-      balken.style.width = `${(schritt / 4) * 100}%`;
-      text.textContent = `Schritt ${schritt} von 4`;
-    }
-
-    function wechsleSichtbarkeit(von, zu) {
-      document.getElementById(von).classList.remove("visible");
-      document.getElementById(zu).classList.add("visible");
-    }
-
-    function zeigeArtikelmaske() {
-      wechsleSichtbarkeit("kundendaten", "artikelmaske");
-      updateFortschritt(3);
-    }
-
-    function zeigeZusatzinfos() {
-      wechsleSichtbarkeit("artikelmaske", "zusatzinfos");
-      updateFortschritt(4);
-    }
-
-    function zeigeUebersicht() {
-      const vorschau = document.getElementById("auftragVorschau");
-      const firma = document.getElementById("firma").value;
-      const notiz = document.getElementById("abschluss_notiz").value;
-      const datum = document.getElementById("abschluss_lieferdatum").value;
-      const positionen = warenkorb.map(p => `${p.name} (${p.menge} × ${p.preis.toFixed(2)} € = ${(p.menge * p.preis).toFixed(2)} €)`).join("\n");
-      vorschau.textContent = `Firma: ${firma}\n\nArtikel:\n${positionen}\n\nLieferdatum: ${datum}\nNotiz: ${notiz}`;
-      wechsleSichtbarkeit("zusatzinfos", "uebersicht");
-      updateFortschritt(4);
-    }
-
-    function filterKunden() {
-      const eingabe = document.getElementById("kundensuche").value.toLowerCase();
-      const list = document.getElementById("autocompleteList");
-      list.innerHTML = "";
-      if (eingabe.length < 2) return;
-      const treffer = kunden.filter(k => k.name.toLowerCase().includes(eingabe));
-      treffer.forEach(k => {
-        const item = document.createElement("div");
-        item.className = "autocomplete-item";
-        item.textContent = k.name;
-        item.onclick = () => fuelleKundendaten(k);
-        list.appendChild(item);
-      });
-    }
-
-    function fuelleKundendaten(kunde) {
-      document.getElementById("firma").value = kunde.name || "";
-      document.getElementById("vorname").value = kunde.vorname || "";
-      document.getElementById("nachname").value = kunde.nachname || "";
-      document.getElementById("strasse").value = kunde.strasse || "";
-      document.getElementById("plz").value = kunde.plz || "";
-      document.getElementById("ort").value = kunde.ort || "";
-      document.getElementById("land").value = kunde.land || "Deutschland";
-      document.getElementById("email").value = kunde.email || "";
-      document.getElementById("telefon").value = kunde.telefon || "";
-      document.getElementById("ustid").value = kunde.ustid || "";
-      document.getElementById("autocompleteList").innerHTML = "";
-    }
-
     function sucheArtikel() {
       const nummer = document.getElementById("artikelnummer").value.trim();
-      const gefunden = artikel.find(a => a.nummer === nummer);
-      document.getElementById("artikelname").value = gefunden ? gefunden.name : "";
+      const gefunden = artikel.find(a => a.Artikelnummer === nummer);
+      document.getElementById("artikelname").value = gefunden ? gefunden.Artikelname : "";
     }
 
     function addArticle() {
       const nummer = document.getElementById("artikelnummer").value.trim();
       const menge = parseInt(document.getElementById("anzahl").value);
-      const art = artikel.find(a => a.nummer === nummer);
+      const art = artikel.find(a => a.Artikelnummer === nummer);
       if (!art || isNaN(menge) || menge <= 0) return;
-      warenkorb.push({ nummer: nummer, name: art.name, menge: menge, preis: parseFloat(art.preis || 0) });
+      const preis = parseFloat(art.Einzelpreis || 0);
+      warenkorb.push({ nummer: nummer, name: art.Artikelname, menge: menge, preis: preis });
 
       const tbody = document.querySelector("#artikelTabelle tbody");
       const zeile = document.createElement("tr");
-      zeile.innerHTML = `<td>${nummer}</td><td>${art.name}</td><td>${menge}</td><td>${art.preis.toFixed(2)}</td><td>${(menge * art.preis).toFixed(2)}</td>`;
+      zeile.innerHTML = `<td>${nummer}</td><td>${art.Artikelname}</td><td>${menge}</td><td>${preis.toFixed(2)}</td><td>${(menge * preis).toFixed(2)}</td>`;
       tbody.appendChild(zeile);
 
       const gesamt = warenkorb.reduce((sum, a) => sum + a.menge * a.preis, 0);
