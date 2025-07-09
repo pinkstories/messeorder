@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Auftragserfassung trendset</title>
+  <title>Messe-Auftragserfassung</title>
   <style>
     body { font-family: Arial, sans-serif; padding: 1rem; }
     input, textarea, select, button {
@@ -17,27 +17,26 @@
 </head>
 <body>
   <div id="fortschritt" style="margin-bottom:1rem;">
-  <div style="background:#ddd; height:1rem; border-radius:1rem; overflow:hidden;">
-    <div id="fortschrittBalken" style="background:#4caf50; height:100%; width:25%; transition: width 0.3s;"></div>
+    <div style="background:#ddd; height:1rem; border-radius:1rem; overflow:hidden;">
+      <div id="fortschrittBalken" style="background:#4caf50; height:100%; width:25%; transition: width 0.3s;"></div>
+    </div>
+    <div id="fortschrittText" style="margin-top:0.5rem; font-weight: bold; text-align: center;">Schritt 1 von 4</div>
   </div>
-  <div id="fortschrittText" style="margin-top:0.5rem; font-weight: bold; text-align: center;">Schritt 1 von 4</div>
-</div>
   <h1>Auftragserfassung</h1>
 
-  <!-- Schritt 1 -->
   <div id="startScreen" class="visible">
+    <p>Ist der Kunde bereits vorhanden?</p>
     <button onclick="startForm(true)">Bestandskunde</button>
     <button onclick="startForm(false)">Neukunde</button>
   </div>
 
-  <!-- Schritt 2 -->
   <div id="kundendaten" class="section">
     <div id="bestandskundeSection">
-  <label>Bestandskunde suchen:</label>
-  <input type="text" id="kundensuche" oninput="filterKunden()" onkeydown="if(event.key === 'Enter'){event.preventDefault(); filterKunden();}" placeholder="Kunde suchen..." />
-  <select id="kundeSelect" onchange="fuelleKundendaten()">
-    <option value="">Kunde auswählen</option>
-  </select>
+      <label>Bestandskunde suchen:</label>
+      <input type="text" id="kundensuche" oninput="filterKunden()" onkeydown="if(event.key === 'Enter'){event.preventDefault(); filterKunden();}" placeholder="Kunde suchen..." />
+      <select id="kundeSelect" onchange="fuelleKundendaten()">
+        <option value="">Kunde auswählen</option>
+      </select>
     </div>
 
     <label>Firmenname:</label>
@@ -65,7 +64,6 @@
     <button type="button" onclick="wechsleSichtbarkeit('kundendaten', 'startScreen')">Zurück</button>
   </div>
 
-  <!-- Schritt 3 -->
   <div id="artikelmaske" class="section">
     <h2>Artikel erfassen</h2>
     <input type="text" id="artikelnummer" placeholder="Artikelnummer scannen/eingeben" oninput="fuelleArtikelname()" onchange="scanErkennung()" onpaste="scanErkennung()" onkeydown="handleEnter(event)" />
@@ -91,7 +89,6 @@
     <button type="button" onclick="wechsleSichtbarkeit('artikelmaske', 'kundendaten')">Zurück</button>
   </div>
 
-  <!-- Schritt 4 -->
   <div id="zusatzinfos" class="section">
     <label>Gewünschtes Lieferdatum:</label>
     <input type="date" id="abschluss_lieferdatum" />
@@ -101,7 +98,6 @@
     <button type="button" onclick="wechsleSichtbarkeit('zusatzinfos', 'artikelmaske')">Zurück</button>
   </div>
 
-  <!-- Schritt 5 -->
   <div id="uebersicht" class="section">
     <h2>Übersicht & Bestätigung</h2>
     <div id="auftragVorschau"></div>
@@ -109,142 +105,143 @@
     <button type="button" onclick="wechsleSichtbarkeit('uebersicht', 'zusatzinfos')">Zurück</button>
   </div>
 
+  <div id="checkBereich" style="margin-top:2rem; font-size:0.9rem; color:#999; text-align:center;">
+    <div id="checkErgebnis" style="margin-top:0.5rem;"></div>
+  </div>
+
   <script>
-let kunden = [], alleKunden = [], artikel = [];
+    let kunden = [], alleKunden = [], artikel = [];
 
-function startForm(isBestandskunde) {
-  document.getElementById("startScreen").classList.remove("visible");
-  document.getElementById("kundendaten").classList.add("visible");
-  document.getElementById("bestandskundeSection").style.display = isBestandskunde ? "block" : "none";
-  updateFortschritt(2);
-}
+    function startForm(isBestandskunde) {
+      document.getElementById("startScreen").classList.remove("visible");
+      document.getElementById("kundendaten").classList.add("visible");
+      document.getElementById("bestandskundeSection").style.display = isBestandskunde ? "block" : "none";
+      updateFortschritt(2);
+    }
 
-function zeigeArtikelmaske() {
-  wechsleSichtbarkeit("kundendaten", "artikelmaske");
-  updateFortschritt(3);
-}
+    function zeigeArtikelmaske() {
+      wechsleSichtbarkeit("kundendaten", "artikelmaske");
+      updateFortschritt(3);
+    }
 
-function zeigeZusatzinfos() {
-  wechsleSichtbarkeit("artikelmaske", "zusatzinfos");
-  updateFortschritt(4);
-}
+    function zeigeZusatzinfos() {
+      wechsleSichtbarkeit("artikelmaske", "zusatzinfos");
+      updateFortschritt(4);
+    }
 
-function zeigeUebersicht() {
-  const vorschau = document.getElementById("auftragVorschau");
-  const firma = document.getElementById("firma").value;
-  const artikel = [...document.querySelectorAll("#artikelTabelle tbody tr")].map(row => row.innerText).join("\n");
-  const notiz = document.getElementById("abschluss_notiz").value;
-  const datum = document.getElementById("abschluss_lieferdatum").value;
-  vorschau.innerText = `Firma: ${firma}\n\nArtikel:\n${artikel}\n\nLieferdatum: ${datum}\nNotiz: ${notiz}`;
-  wechsleSichtbarkeit("zusatzinfos", "uebersicht");
-  updateFortschritt(4);
-}
+    function zeigeUebersicht() {
+      const vorschau = document.getElementById("auftragVorschau");
+      const firma = document.getElementById("firma").value;
+      const artikel = [...document.querySelectorAll("#artikelTabelle tbody tr")].map(row => row.innerText).join("\n");
+      const notiz = document.getElementById("abschluss_notiz").value;
+      const datum = document.getElementById("abschluss_lieferdatum").value;
+      vorschau.innerText = `Firma: ${firma}\n\nArtikel:\n${artikel}\n\nLieferdatum: ${datum}\nNotiz: ${notiz}`;
+      wechsleSichtbarkeit("zusatzinfos", "uebersicht");
+      updateFortschritt(4);
+    }
 
-function wechsleSichtbarkeit(von, zu) {
-  document.getElementById(von).classList.remove("visible");
-  document.getElementById(zu).classList.add("visible");
-}
+    function wechsleSichtbarkeit(von, zu) {
+      document.getElementById(von).classList.remove("visible");
+      document.getElementById(zu).classList.add("visible");
+    }
 
-function updateFortschritt(schritt) {
-  const max = 4;
-  const balken = document.getElementById("fortschrittBalken");
-  const text = document.getElementById("fortschrittText");
-  balken.style.width = `${(schritt / max) * 100}%`;
-  text.textContent = `Schritt ${schritt} von ${max}`;
-}
+    function updateFortschritt(schritt) {
+      const max = 4;
+      const balken = document.getElementById("fortschrittBalken");
+      const text = document.getElementById("fortschrittText");
+      balken.style.width = `${(schritt / max) * 100}%`;
+      text.textContent = `Schritt ${schritt} von ${max}`;
+    }
 
-function filterKunden() {
-  const suchbegriff = document.getElementById("kundensuche").value.toLowerCase();
-  const select = document.getElementById("kundeSelect");
-  select.innerHTML = '<option value="">Kunde auswählen</option>';
-  const gefiltert = alleKunden.filter(k => k.name.toLowerCase().includes(suchbegriff));
-  gefiltert.forEach(k => {
-    const opt = document.createElement("option");
-    opt.value = k.name.replace(/^\*/, '').trim();
-    opt.textContent = k.name.replace(/^\*/, '').trim();
-    select.appendChild(opt);
-  });
-  if (gefiltert.length === 1) {
-    select.selectedIndex = 1;
-    fuelleKundendaten();
-  }
-}
-
-function fuelleKundendaten() {
-  const auswahl = document.getElementById("kundeSelect").value;
-  const kunde = kunden.find(k => k.name.replace(/^\*/, '').trim() === auswahl);
-  if (kunde) {
-    document.getElementById("firma").value = kunde.name || "";
-    document.getElementById("vorname").value = kunde.vorname || "";
-    document.getElementById("nachname").value = kunde.nachname || "";
-    document.getElementById("strasse").value = kunde.strasse || "";
-    document.getElementById("plz").value = kunde.plz || "";
-    document.getElementById("ort").value = kunde.ort || "";
-    document.getElementById("land").value = kunde.land || "Deutschland";
-    document.getElementById("email").value = kunde.email || "";
-    document.getElementById("telefon").value = kunde.telefon || "";
-    document.getElementById("ustid").value = kunde.ustid || "";
-  }
-}
-
-function checkDaten() {
-  const info = document.getElementById("checkErgebnis");
-  let kundenOk = false;
-  let artikelOk = false;
-
-  fetch("kunden.json")
-    .then(res => {
-      if (!res.ok) throw new Error("Kundenliste nicht gefunden");
-      return res.json();
-    })
-    .then(data => {
-      kunden = data;
-      alleKunden = data.slice();
-      kundenOk = true;
-      info.innerHTML = `✅ ${data.length} Kunden geladen.`;
+    function filterKunden() {
+      const suchbegriff = document.getElementById("kundensuche").value.toLowerCase();
       const select = document.getElementById("kundeSelect");
-      data.forEach(k => {
+      select.innerHTML = '<option value="">Kunde auswählen</option>';
+      const gefiltert = alleKunden.filter(k => k.name.toLowerCase().includes(suchbegriff));
+      gefiltert.forEach(k => {
         const opt = document.createElement("option");
         opt.value = k.name.replace(/^\*/, '').trim();
         opt.textContent = k.name.replace(/^\*/, '').trim();
         select.appendChild(opt);
       });
-      hideCheckButtonsIfReady();
-    })
-    .catch(err => {
-      info.innerHTML = `❌ Fehler beim Laden von kunden.json: ${err.message}`;
-      info.style.color = "red";
-    });
-
-  fetch("artikel.json")
-    .then(res => {
-      if (!res.ok) throw new Error("Artikelliste nicht gefunden");
-      return res.json();
-    })
-    .then(data => {
-      artikel = data;
-      artikelOk = true;
-      info.innerHTML += `<br>✅ ${data.length} Artikel geladen.`;
-      hideCheckButtonsIfReady();
-    })
-    .catch(err => {
-      info.innerHTML += `<br>❌ Fehler beim Laden von artikel.json: ${err.message}`;
-      info.style.color = "red";
-    });
-
-  function hideCheckButtonsIfReady() {
-    if (kunden.length > 0 && artikel.length > 0) {
-      document.getElementById("checkBereich").style.display = "none";
+      if (gefiltert.length === 1) {
+        select.selectedIndex = 1;
+        fuelleKundendaten();
+      }
     }
-  }
-}
 
-window.addEventListener("DOMContentLoaded", () => {
-  checkDaten();
-});
-</script>
+    function fuelleKundendaten() {
+      const auswahl = document.getElementById("kundeSelect").value;
+      const kunde = kunden.find(k => k.name.replace(/^\*/, '').trim() === auswahl);
+      if (kunde) {
+        document.getElementById("firma").value = kunde.name || "";
+        document.getElementById("vorname").value = kunde.vorname || "";
+        document.getElementById("nachname").value = kunde.nachname || "";
+        document.getElementById("strasse").value = kunde.strasse || "";
+        document.getElementById("plz").value = kunde.plz || "";
+        document.getElementById("ort").value = kunde.ort || "";
+        document.getElementById("land").value = kunde.land || "Deutschland";
+        document.getElementById("email").value = kunde.email || "";
+        document.getElementById("telefon").value = kunde.telefon || "";
+        document.getElementById("ustid").value = kunde.ustid || "";
+      }
+    }
 
-<!-- Bereich zum Überprüfen -->
-<div id="checkBereich" style="margin-top:2rem; font-size:0.9rem; color:#999; text-align:center;">
-  <div id="checkErgebnis" style="margin-top:0.5rem;"></div>
-</div>
+    function checkDaten() {
+      const info = document.getElementById("checkErgebnis");
+      let kundenOk = false;
+      let artikelOk = false;
+
+      fetch("kunden.json")
+        .then(res => {
+          if (!res.ok) throw new Error("Kundenliste nicht gefunden");
+          return res.json();
+        })
+        .then(data => {
+          kunden = data;
+          alleKunden = data.slice();
+          kundenOk = true;
+          info.innerHTML = `✅ ${data.length} Kunden geladen.`;
+          const select = document.getElementById("kundeSelect");
+          data.forEach(k => {
+            const opt = document.createElement("option");
+            opt.value = k.name.replace(/^\*/, '').trim();
+            opt.textContent = k.name.replace(/^\*/, '').trim();
+            select.appendChild(opt);
+          });
+          hideCheckButtonsIfReady();
+        })
+        .catch(err => {
+          info.innerHTML = `❌ Fehler beim Laden von kunden.json: ${err.message}`;
+          info.style.color = "red";
+        });
+
+      fetch("artikel.json")
+        .then(res => {
+          if (!res.ok) throw new Error("Artikelliste nicht gefunden");
+          return res.json();
+        })
+        .then(data => {
+          artikel = data;
+          artikelOk = true;
+          info.innerHTML += `<br>✅ ${data.length} Artikel geladen.`;
+          hideCheckButtonsIfReady();
+        })
+        .catch(err => {
+          info.innerHTML += `<br>❌ Fehler beim Laden von artikel.json: ${err.message}`;
+          info.style.color = "red";
+        });
+
+      function hideCheckButtonsIfReady() {
+        if (kunden.length > 0 && artikel.length > 0) {
+          document.getElementById("checkBereich").style.display = "none";
+        }
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      checkDaten();
+    });
+  </script>
+</body>
+</html>
