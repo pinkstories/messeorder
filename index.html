@@ -83,5 +83,113 @@
   <noscript>
     <p>Bitte aktiviere JavaScript, um das Formular zu verwenden.</p>
   </noscript>
+<script>
+  function startForm(isBestandskunde) {
+    document.getElementById("startScreen").classList.remove("visible");
+    document.getElementById("kundendaten").classList.add("visible");
+    document.getElementById("bestandskundeSection").style.display = isBestandskunde ? "block" : "none";
+    updateFortschritt(2);
+  }
+
+  function updateFortschritt(schritt) {
+    const max = 4;
+    const balken = document.getElementById("fortschrittBalken");
+    const text = document.getElementById("fortschrittText");
+    balken.style.width = `${(schritt / max) * 100}%`;
+    text.textContent = `Schritt ${schritt} von ${max}`;
+  }
+</script>
+
+<!-- Schritt 2 -->
+<div id="kundendaten" class="section">
+  <div id="bestandskundeSection">
+    <label>Bestandskunde:</label>
+    <select id="kundeSelect">
+      <option value="">Kunde auswählen</option>
+      <!-- Optionen dynamisch befüllen -->
+    </select>
+  </div>
+
+  <label>Firmenname:</label>
+  <input type="text" id="firma" />
+  <label>Vorname:</label>
+  <input type="text" id="vorname" />
+  <label>Nachname:</label>
+  <input type="text" id="nachname" />
+  <label>Straße + Hausnummer:</label>
+  <input type="text" id="strasse" required />
+  <label>PLZ:</label>
+  <input type="text" id="plz" required />
+  <label>Ort:</label>
+  <input type="text" id="ort" required />
+  <label>Land:</label>
+  <input type="text" id="land" value="Deutschland" />
+  <label>E-Mail:</label>
+  <input type="email" id="email" />
+  <label>Telefon:</label>
+  <input type="text" id="telefon" />
+  <label>USt-IdNr. (nur außerhalb DE/EU):</label>
+  <input type="text" id="ustid" />
+
+  <button type="button" onclick="zeigeArtikelmaske()">Weiter</button>
+  <button type="button" onclick="wechsleSichtbarkeit('kundendaten', 'startScreen')">Zurück</button>
+</div>
+
+<script>
+  function zeigeArtikelmaske() {
+    wechsleSichtbarkeit("kundendaten", "artikelmaske");
+    updateFortschritt(3);
+  }
+
+  function wechsleSichtbarkeit(von, zu) {
+    document.getElementById(von).classList.remove("visible");
+    document.getElementById(zu).classList.add("visible");
+  }
+</script>
+<!-- Schritt 3 -->
+<div id="artikelmaske" class="section">
+  <h2>Artikel erfassen</h2>
+  <input type="text" id="artikelnummer" placeholder="Artikelnummer scannen/eingeben" />
+  <input type="text" id="artikelname" placeholder="Artikelname" readonly />
+  <input type="number" id="anzahl" placeholder="Anzahl" min="1" />
+  <button type="button" onclick="zeigeZusatzinfos()">Weiter</button>
+  <button type="button" onclick="wechsleSichtbarkeit('artikelmaske', 'kundendaten'); updateFortschritt(2);">Zurück</button>
+</div>
+
+<!-- Schritt 4 -->
+<div id="zusatzinfos" class="section">
+  <label>Gewünschtes Lieferdatum:</label>
+  <input type="date" id="abschluss_lieferdatum" />
+  <label>Notiz zum Auftrag:</label>
+  <textarea id="abschluss_notiz"></textarea>
+  <button type="button" onclick="zeigeUebersicht()">Zur Übersicht</button>
+  <button type="button" onclick="wechsleSichtbarkeit('zusatzinfos', 'artikelmaske'); updateFortschritt(3);">Zurück</button>
+</div>
+
+<!-- Schritt 5 -->
+<div id="uebersicht" class="section">
+  <h2>Übersicht & Bestätigung</h2>
+  <div id="auftragVorschau"></div>
+  <button type="button" onclick="wechsleSichtbarkeit('uebersicht', 'zusatzinfos'); updateFortschritt(4);">Zurück</button>
+</div>
+
+<script>
+function zeigeZusatzinfos() {
+  wechsleSichtbarkeit("artikelmaske", "zusatzinfos");
+  updateFortschritt(4);
+}
+
+function zeigeUebersicht() {
+  const vorschau = document.getElementById("auftragVorschau");
+  const firma = document.getElementById("firma").value;
+  const notiz = document.getElementById("abschluss_notiz").value;
+  const datum = document.getElementById("abschluss_lieferdatum").value;
+  vorschau.innerText = `Firma: ${firma}
+Lieferdatum: ${datum}
+Notiz: ${notiz}`;
+  wechsleSichtbarkeit("zusatzinfos", "uebersicht");
+  updateFortschritt(4);
+}
+</script>
 </body>
 </html>
