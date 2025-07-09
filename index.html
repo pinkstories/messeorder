@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Messe-Auftragserfassung</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 1rem; }
+    input, textarea, select, button {
+      width: 100%; margin: 0.5rem 0; padding: 0.5rem; font-size: 1rem;
+    }
+    table { width: 100%; margin-top: 1rem; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+    .section { display: none; }
+    .visible { display: block; }
+  </style>
+</head>
+<body>
+  <div id="fortschritt" style="margin-bottom:1rem;">
+  <div style="background:#ddd; height:1rem; border-radius:1rem; overflow:hidden;">
+    <div id="fortschrittBalken" style="background:#4caf50; height:100%; width:25%; transition: width 0.3s;"></div>
+  </div>
+  <div id="fortschrittText" style="margin-top:0.5rem; font-weight: bold; text-align: center;">Schritt 1 von 4</div>
+</div>
+  <h1>Auftragserfassung</h1>
+
+  <!-- Schritt 1 -->
+  <div id="startScreen" class="visible">
+    <p>Ist der Kunde bereits vorhanden?</p>
+    <button onclick="startForm(true)">Bestandskunde</button>
+    <button onclick="startForm(false)">Neukunde</button>
+  </div>
+
+  <!-- Schritt 2 -->
+  <div id="kundendaten" class="section">
+    <div id="bestandskundeSection">
+      <label>Bestandskunde:</label>
+      <select id="kundeSelect" onchange="fuelleKundendaten()">
+        <option value="">Kunde auswählen</option>
+      </select>
+    </div>
+
+    <label>Firmenname:</label>
+    <input type="text" id="firma" />
+    <label>Vorname:</label>
+    <input type="text" id="vorname" />
+    <label>Nachname:</label>
+    <input type="text" id="nachname" />
+    <label>Straße + Hausnummer:</label>
+    <input type="text" id="strasse" required />
+    <label>PLZ:</label>
+    <input type="text" id="plz" required />
+    <label>Ort:</label>
+    <input type="text" id="ort" required />
+    <label>Land:</label>
+    <input type="text" id="land" value="Deutschland" />
+    <label>E-Mail:</label>
+    <input type="email" id="email" />
+    <label>Telefon:</label>
+    <input type="text" id="telefon" />
+    <label>USt-IdNr. (nur außerhalb DE/EU):</label>
+    <input type="text" id="ustid" />
+
+    <button type="button" onclick="zeigeArtikelmaske()">Weiter</button>
+    <button type="button" onclick="wechsleSichtbarkeit('kundendaten', 'startScreen')">Zurück</button>
+  </div>
+
+  <!-- Schritt 3 -->
+  <div id="artikelmaske" class="section">
+    <h2>Artikel erfassen</h2>
+    <input type="text" id="artikelnummer" placeholder="Artikelnummer scannen/eingeben" oninput="fuelleArtikelname()" onchange="scanErkennung()" onpaste="scanErkennung()" onkeydown="handleEnter(event)" />
+    <input type="text" id="artikelname" placeholder="Artikelname" readonly />
+    <input type="number" id="anzahl" placeholder="Anzahl" min="1" />
+    <button type="button" onclick="addArticle()">Artikel hinzufügen</button>
+
+    <table id="artikelTabelle">
+      <thead>
+        <tr>
+          <th>Artikelnummer</th>
+          <th>Artikelname</th>
+          <th>Anzahl</th>
+          <th>Einzelpreis (€)</th>
+          <th>Gesamtpreis (€)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h3>Aktueller Auftragswert: <span id="gesamtwert">0.00 €</span></h3>
+    <button type="button" onclick="zeigeZusatzinfos()">Weiter</button>
+    <button type="button" onclick="wechsleSichtbarkeit('artikelmaske', 'kundendaten')">Zurück</button>
+  </div>
+
+  <!-- Schritt 4 -->
+  <div id="zusatzinfos" class="section">
+    <label>Gewünschtes Lieferdatum:</label>
+    <input type="date" id="abschluss_lieferdatum" />
+    <label>Notiz zum Auftrag:</label>
+    <textarea id="abschluss_notiz"></textarea>
+    <button type="button" onclick="zeigeUebersicht()">Zur Übersicht</button>
+    <button type="button" onclick="wechsleSichtbarkeit('zusatzinfos', 'artikelmaske')">Zurück</button>
+  </div>
+
+  <!-- Schritt 5 -->
+  <div id="uebersicht" class="section">
+    <h2>Übersicht & Bestätigung</h2>
+    <div id="auftragVorschau"></div>
+    <button type="button" onclick="saveOrder()">Auftrag speichern</button>
+    <button type="button" onclick="wechsleSichtbarkeit('uebersicht', 'zusatzinfos')">Zurück</button>
+  </div>
+
+  <script>
+    function startForm(isBestandskunde) {
+  document.getElementById("startScreen").classList.remove("visible");
+  document.getElementById("kundendaten").classList.add("visible");
+  document.getElementById("bestandskundeSection").style.display = isBestandskunde ? "block" : "none";
+  document.getElementById("fortschrittText").textContent = "Schritt 2 von 4";
+  document.getElementById("fortschrittBalken").style.width = "50%";
+    }
+    function zeigeArtikelmaske() {
+      wechsleSichtbarkeit("kundendaten", "artikelmaske");
+    }
+    function zeigeZusatzinfos() {
+      wechsleSichtbarkeit("artikelmaske", "zusatzinfos");
+    }
+    function zeigeUebersicht() {
+      const vorschau = document.getElementById("auftragVorschau");
+      const firma = document.getElementById("firma").value;
+      const artikel = [...document.querySelectorAll("#artikelTabelle tbody tr")].map(row => row.innerText).join("\n");
+      const notiz = document.getElementById("abschluss_notiz").value;
+      const datum = document.getElementById("abschluss_lieferdatum").value;
+      vorschau.innerText = `Firma: ${firma}\n\nArtikel:\n${artikel}\n\nLieferdatum: ${datum}\nNotiz: ${notiz}`;
+      wechsleSichtbarkeit("zusatzinfos", "uebersicht");
+    }
+    function wechsleSichtbarkeit(von, zu) {
+  document.getElementById(von).classList.remove("visible");
+  document.getElementById(zu).classList.add("visible");
+  const fortschritt = document.getElementById("fortschritt");
+  const schritte = {
+    startScreen: 1,
+    kundendaten: 2,
+    artikelmaske: 3,
+    zusatzinfos: 4,
+    uebersicht: 5
+  };
+  if (fortschritt && schritte[zu]) {
+    const max = 4;
+    const aktuell = Math.min(schritte[zu], max);
+    document.getElementById("fortschrittText").textContent = `Schritt ${aktuell} von ${max}`;
+    document.getElementById("fortschrittBalken").style.width = `${(aktuell / max) * 100}%`;
+  }
+}
+  let kunden = [];
+fetch("kunden.json")
+  .then(res => res.json())
+  .then(data => {
+    kunden = data;
+    const select = document.getElementById("kundeSelect");
+    kunden.forEach(k => {
+      const opt = document.createElement("option");
+      opt.value = k.name.replace(/^\*/, '').trim();
+      opt.textContent = k.name.replace(/^\*/, '').trim();
+      select.appendChild(opt);
+    });
+  });
+
+function fuelleKundendaten() {
+  const auswahl = document.getElementById("kundeSelect").value;
+  const kunde = kunden.find(k => k.name.replace(/^\*/, '').trim() === auswahl);
+  if (kunde) {
+    document.getElementById("firma").value = kunde.name || "";
+    document.getElementById("vorname").value = kunde.vorname || "";
+    document.getElementById("nachname").value = kunde.nachname || "";
+    document.getElementById("strasse").value = kunde.strasse || "";
+    document.getElementById("plz").value = kunde.plz || "";
+    document.getElementById("ort").value = kunde.ort || "";
+    document.getElementById("land").value = kunde.land || "Deutschland";
+    document.getElementById("email").value = kunde.email || "";
+    document.getElementById("telefon").value = kunde.telefon || "";
+    document.getElementById("ustid").value = kunde.ustid || "";
+  }
+}
+</script>
+</body>
+</html>
