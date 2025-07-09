@@ -402,22 +402,10 @@
     "preis": 0.0
   },
   {
-    "artikelnummer": "1075",
-    "name": "Eierkerzen Glitzereffekt",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "1076",
     "name": "Glitzer Mint",
     "einheit": 6,
     "preis": 50.0
-  },
-  {
-    "artikelnummer": "1077",
-    "name": "/",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "1079",
@@ -568,30 +556,6 @@
     "name": "Stabkerze 195/22",
     "einheit": 6,
     "preis": 0.0
-  },
-  {
-    "artikelnummer": "1110",
-    "name": "Samtpouch",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1123",
-    "name": "Pouch Tray 30x40 Purple/Key Lime",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1124",
-    "name": "Pouch Tray 19x27 Gold Gelb/Key Lime",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1125",
-    "name": "Pouch Tray 19x27 Olive/Key Lime",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "1132",
@@ -778,12 +742,6 @@
     "name": "Kerzentauchmasse Trudastar",
     "einheit": 6,
     "preis": 0.0
-  },
-  {
-    "artikelnummer": "1212",
-    "name": "Kerze Swirl 240 mm",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "1213",
@@ -1722,30 +1680,6 @@
     "preis": 19.9
   },
   {
-    "artikelnummer": "1400",
-    "name": "Rainbow Studio * Lack/Glitter gold_pink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1401",
-    "name": "Rainbow Studio * Lack/Glitter silber_pink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1402",
-    "name": "Siebkosten und Datenaufbereitung (5fb)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1406",
-    "name": "Rüstkosten",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "1408",
     "name": "Baumkerzen 105/13 halbgelackt",
     "einheit": 6,
@@ -1780,54 +1714,6 @@
     "name": "Stabkerze Skinny 250/12 halbgelackt Herbstgold/Creamgold",
     "einheit": 6,
     "preis": 0.0
-  },
-  {
-    "artikelnummer": "1414",
-    "name": "Schaumstoff Zuschnitt Skinny Dreiecksverpackung",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1415",
-    "name": "Schaumstoff Zuschnitt Stabkerzen Graphic Lights (rot)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1416",
-    "name": "Schaumstoff Zuschnitt Swirl oben",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1417",
-    "name": "Kerzentauchmasse Trudastar",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1418",
-    "name": "Reisseffektlack farblos 1. Schicht (1159 5980)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1419",
-    "name": "Reisseffektlack vanille 2. Schicht (1229 6288)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1420",
-    "name": "Reisseffektlack rot 2. Schicht (1229 6191)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1421",
-    "name": "Reisseffektlack gold 2. Schicht (1229 5259)",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "1422",
@@ -1980,24 +1866,6 @@
     "preis": 4.0
   },
   {
-    "artikelnummer": "1447",
-    "name": "Stabkerze 210/21, Siebdruck, Sterne, neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1448",
-    "name": "Stabkerze 210/21, Siebdruck, Sterne, neonorange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1449",
-    "name": "Stabkerze 210/21, Siebdruck, Sterne, neonrot",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "1450",
     "name": "Armband",
     "einheit": 6,
@@ -2026,90 +1894,6 @@
     "name": "Stabkerze 210/21 halbgeglitzert Violet Prism (8311)",
     "einheit": 6,
     "preis": 0.0
-  },
-  {
-    "artikelnummer": "1455",
-    "name": "Stabkerze 210/21 Wild Jaguar Blau-Rot",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1456",
-    "name": "Stabkerze 210/21 Wild Jaguar Petrol-Rot",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1457",
-    "name": "Stabkerze 210/21 Wild Jaguar Neon Pink-Vanille",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1458",
-    "name": "Stabkerze 210/21 Wild Giraffe Dirty Pink-Vanille",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1459",
-    "name": "Stabkerze 210/21 Wild Giraffe Sunshine Gelb-Vanille",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1460",
-    "name": "Stabkerze 210/21 Wild Giraffe Nude-Gold",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1461",
-    "name": "Stabkerze 210/21 Wild Chamäleon Neon Rot-Rot",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1462",
-    "name": "Stabkerze 210/21 Wild Chamäleon Flieder-Rot",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1463",
-    "name": "Stabkerze 210/21 Wild Chamäleon Neon Orange-Vanille",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1464",
-    "name": "Stabkerze 210/21 Wild Crocodile Flieder-Vanille",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1465",
-    "name": "Stabkerze 210/21 Wild Crocodile Neon Grün-Vanille",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1466",
-    "name": "Stabkerze 210/21 Wild Crocodile Türkis-Vanille",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1467",
-    "name": "Skinny Dreiecksverpackung",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1468",
-    "name": "Skinny 4er Kerzenverpackung gold",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "1469",
@@ -2706,72 +2490,6 @@
     "preis": 0.0
   },
   {
-    "artikelnummer": "1573",
-    "name": "Umschlag C6 Türkis",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1574",
-    "name": "Stumpenkerze 80/40 halbgeglitzert gold (8305)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1575",
-    "name": "Stumpenkerze 80/40 halbgeglitzert champagner (1085)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1576",
-    "name": "Stumpenkerze 80/40 halbgeglitzert mint (1076)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1577",
-    "name": "Stumpenkerze 80/40 halbgeglitzert neongrün (1084)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1578",
-    "name": "Stumpenkerze 80/40 halbgeglitzert flieder (8303)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1579",
-    "name": "Stumpenkerze 80/40 halbgeglitzert blau (1086)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1580",
-    "name": "Stumpenkerze 80/40 halbgeglitzert phantom blue (8304)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1581",
-    "name": "Stumpenkerze 80/40 halbgeglitzert neon rot (8300)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1582",
-    "name": "Stumpenkerze 80/40 halbgeglitzert neon pink (1083)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1583",
-    "name": "Umschlag C6 Coral",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "1584",
     "name": "GC Vase * Green XL",
     "einheit": 6,
@@ -2850,12 +2568,6 @@
     "preis": 26.0
   },
   {
-    "artikelnummer": "1597",
-    "name": "Schaumstoff Zuschnitt Stabkerzen Glitzer (anthrazit)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "1598",
     "name": "Snuggies (weiss)",
     "einheit": 6,
@@ -2866,18 +2578,6 @@
     "name": "Snuggies (anthrazit)",
     "einheit": 6,
     "preis": 2.5
-  },
-  {
-    "artikelnummer": "1600",
-    "name": "Skinny 4er Kerzenverpackung silber",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1601",
-    "name": "Skinny 4er Kerzenverpackung kupfer",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "1602",
@@ -2904,142 +2604,10 @@
     "preis": 0.0
   },
   {
-    "artikelnummer": "1606",
-    "name": "Versandkarton Standard FEFCO201 450/320/320",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1607",
-    "name": "Versandkarton Groß FEFCO201 550/360/350",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1608",
-    "name": "Stabkerze 210/21 einfarbig, sunshine gelb",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1609",
-    "name": "Stabkerze 210/21 einfarbig, dirty pink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1610",
-    "name": "Stabkerze 210/21 einfarbig, nude",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1611",
-    "name": "Stabkerze 210/21 einfarbig, petrol",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1612",
-    "name": "Stabkerze 210/21 einfarbig, neon pink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1613",
-    "name": "Stabkerze 210/21 einfarbig, blau",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1614",
-    "name": "Stabkerze 210/21 einfarbig, neon orange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1615",
-    "name": "Stabkerze 210/21 einfarbig, flieder",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1616",
-    "name": "Stabkerze 210/21 einfarbig, neon rot",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1617",
-    "name": "Stabkerze 210/21 einfarbig, neon grün",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1618",
-    "name": "Stabkerze 210/21 einfarbig, türkis",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1619",
-    "name": "Eierkarton 4er grau",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1620",
-    "name": "Eierkarton 6er blau",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1621",
-    "name": "Eierkarton 6er grün",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1622",
-    "name": "Eierkarton 6er gelb",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1623",
-    "name": "Eierkarton 10er pink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1624",
-    "name": "Kerze Swirl halbgelackt kupfer",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "1625",
     "name": "Lama Grande * Trinidad",
     "einheit": 6,
     "preis": 3.25
-  },
-  {
-    "artikelnummer": "1626",
-    "name": "Kerze Swirl halbgelackt perlmutt",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1627",
-    "name": "Kerze Swirl halbgelackt Weihnachtsgold (1106 233684)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1628",
-    "name": "Kerze Swirl halbgelackt violett",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "1629",
@@ -3048,142 +2616,10 @@
     "preis": 3.25
   },
   {
-    "artikelnummer": "1630",
-    "name": "Kerze Swirl halbgelackt grün",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1631",
-    "name": "Kerze Swirl halbgelackt rot",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1632",
-    "name": "Kerze Swirl halbgelackt silber",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1633",
-    "name": "Kerze Swirl halbgelackt rosa",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1634",
-    "name": "Schaumstoff Zuschnitt Swirl unten",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1635",
-    "name": "Flipper Cube Rohling",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1636",
-    "name": "Flipper Boob Rohling",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1637",
-    "name": "Flipper Tube Rohling",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1638",
-    "name": "Dipper Cube Rohling",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1639",
-    "name": "Dipper Boob Rohling",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1640",
-    "name": "Dipper Tube Rohling",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1641",
-    "name": "Fitter Rohling",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1642",
-    "name": "Tray A4 Rohling Stahlblech 1 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1643",
-    "name": "Tray A5 Rohling Stahlblech 1 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1644",
-    "name": "Tray A6 Rohling Stahlblech 1 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "1645",
     "name": "Twinkle Kerzenverpackung shatter pink",
     "einheit": 6,
     "preis": 0.0
-  },
-  {
-    "artikelnummer": "1662",
-    "name": "Sonderkerze \"1 of Shocking Pineapple\"",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1663",
-    "name": "Stabkerze 210/21 einfarbig, violett",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1664",
-    "name": "Stabkerze 210/21 einfarbig, mint",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1665",
-    "name": "Stabkerze 210/21 einfarbig, blush",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1666",
-    "name": "Stabkerze 210/21 einfarbig, rosa",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1667",
-    "name": "Stabkerze 210/21 einfarbig, zitronengelb",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1668",
-    "name": "Less Bla * Druck Neonorange",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "1669",
@@ -3250,36 +2686,6 @@
     "name": "Graphic Lights Kerzenverpackung (Lines V)",
     "einheit": 6,
     "preis": 0.0
-  },
-  {
-    "artikelnummer": "1681",
-    "name": "Skinny Dreiecksverpackung (Lines Block)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1682",
-    "name": "Skinny Dreiecksverpackung (Lines Dünn)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1683",
-    "name": "Skinny Dreiecksverpackung (Dots Hell)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1684",
-    "name": "Skinny Dreiecksverpackung (Dunkelrot Streifen)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1685",
-    "name": "Skinny Dreiecksverpackung (Streifen Rot Raster)",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "1686",
@@ -3360,130 +2766,16 @@
     "preis": 9.0
   },
   {
-    "artikelnummer": "1699",
-    "name": "Postkarton 25x16x3 cm Rosa",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1700",
-    "name": "Versandkarton Klebestreifen 460x310x160",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "1701",
     "name": "Hello Baby * Wal",
     "einheit": 6,
     "preis": 3.0
   },
   {
-    "artikelnummer": "1702",
-    "name": "Banderole  Ostern",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1703",
-    "name": "Pulverbeschichtung Neonpink (Tiger Neonpink)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1704",
-    "name": "Pulverbeschichtung Neonrot (KABE Leucht Flammrot)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1705",
-    "name": "Pulverbeschichtung Purple (KABE Leucht-Violett)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1706",
-    "name": "Pulverbeschichtung Yellow (RAL 1016)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1707",
-    "name": "Pulverbeschichtung Lilac (KABE NCS Flieder)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1708",
-    "name": "Pulverbeschichtung Coral (KABE NCS Coralle)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1709",
-    "name": "Pulverbeschichtung Mint (KABE NCS Mint)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1710",
-    "name": "Pulverbeschichtung White (RAL 9003)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1711",
-    "name": "Pulverbeschichtung Black (RAL 9005)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1712",
-    "name": "Pulverbeschichtung Cosmic Pink (Prismatic Powders PTB-10804)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1713",
-    "name": "Pulverbeschichtung Screamin´ Coral (Prismatic Powders PSB-10315)808)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1714",
-    "name": "Pulverbeschichtung Cosmic Yellow (Prismatic Powders PTB-10805)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1715",
-    "name": "Pulverbeschichtung Cosmic Violet (Prismatic Powders PTB-10803)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1716",
-    "name": "Pulverbeschichtung Cosmic Green (Prismatic Powders PTB-10806)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1717",
-    "name": "Pulverbeschichtung Cosmic Blue (Prismatic Powders PTB-10807)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "1719",
     "name": "Dip Dye Marble * Gamma Ray",
     "einheit": 6,
     "preis": 10.0
-  },
-  {
-    "artikelnummer": "1721",
-    "name": "Dip Dye Marble * Paisley Storm",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "1727",
@@ -3502,186 +2794,6 @@
     "name": "Dip Dye Marble * Supernova Mix",
     "einheit": 6,
     "preis": 8.0
-  },
-  {
-    "artikelnummer": "1733",
-    "name": "Umschlag C6 schwarz",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1734",
-    "name": "Lochblech 2500x1250 RG 5-15",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1735",
-    "name": "Eck-Lochblech 2500x625 mm RG 5-15",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1736",
-    "name": "Lochblechtisch 1250x900x700 RV 5-8",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1737",
-    "name": "Tray A6 Rohling Lochblech RG 5-8 1,5 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1738",
-    "name": "Tray A5 Rohling Lochblech RG 5-8 1,5 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1739",
-    "name": "Tray A4 Rohling Lochblech RG 5-8 1,5 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1740",
-    "name": "Lochblechschublade 625x700 RV 5-8",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1741",
-    "name": "Alusystemprofil 30x30 Vierkantrahmen 700 x 900 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1742",
-    "name": "Alusystemprofil 30x30 U-Rahmen 700 x 625 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1743",
-    "name": "Haken 45 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1744",
-    "name": "Haken 120 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1745",
-    "name": "Haken 160 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1746",
-    "name": "Haken 200 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1748",
-    "name": "Umschlag C6 neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1749",
-    "name": "Umschlag C6 neongelb",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1750",
-    "name": "Umschlag C6 muskat",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1751",
-    "name": "Umschlag C6 neonorange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1752",
-    "name": "Umschlag C6 kupfer",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1753",
-    "name": "Umschlag C6 gold",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1754",
-    "name": "Umschlag C6 neongrün",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1755",
-    "name": "Umschlag C6 pearl lilac",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1756",
-    "name": "Umschlag C6 sunshine",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1757",
-    "name": "Umschlag C6 hellgrün (mint)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1758",
-    "name": "Umschlag C6 lavendel",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1759",
-    "name": "Umschlag C6 apple mint",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1760",
-    "name": "Umschlag C6 candy floss",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1761",
-    "name": "Cellophanbeutel",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1762",
-    "name": "Cellophanbeutel biologisch abbaubar",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1763",
-    "name": "Umschlag C6 flieder",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "1765",
@@ -3810,12 +2922,6 @@
     "preis": 84.0
   },
   {
-    "artikelnummer": "1788",
-    "name": "Stabkerzen Verpackung Chopard - Rosa, Gold",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "1789",
     "name": "Sardinen Glückwünsche rosa",
     "einheit": 6,
@@ -3858,288 +2964,6 @@
     "preis": 27.0
   },
   {
-    "artikelnummer": "1798",
-    "name": "Shipping FAIRE",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1799",
-    "name": "Next day payout fee (0%)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1800",
-    "name": "Provision FAIRE (0%)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1801",
-    "name": "Shipping Ankorstore",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1802",
-    "name": "Provision Ankorstore (0%)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1803",
-    "name": "Shipping Orderchamp",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1804",
-    "name": "Provision Orderchamp (0%)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1805",
-    "name": "Eggs Tray \"Foursome\" Farbe 1",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1806",
-    "name": "Eggs Tray \"Foursome\" Farbe 2",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1807",
-    "name": "Eggs Tray \"Foursome\" Farbe 3",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1808",
-    "name": "Eggs Tray \"Foursome\" Farbe 4",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1809",
-    "name": "Graupappe 400g 50x70 BB",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1810",
-    "name": "Gmund Papier rosa / Zuschnitt 43,3x32 cm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1811",
-    "name": "Gmund Papier rosa 100x30 cm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1812",
-    "name": "Stab/Gmund Action Heart Attack/310g/Folico 713",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1813",
-    "name": "Stab/Gmund Action Pink Stories/310g/Offset gelb",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1814",
-    "name": "Stab/Gmund Used 6/300g/Folico 6638",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1815",
-    "name": "Stab/Gmund Les Naturals opale rosa/330g/Folico 6638",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1816",
-    "name": "Stab/Gmund Action Electric Blood/430g/Folico 6719",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1817",
-    "name": "Stab/Gmund Les Naturals rubis/330g/Folico 6639",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1818",
-    "name": "Stab/Gmund Used 6/300g/Folico 6639",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1819",
-    "name": "Stab/Gmund Colors Matt 63/300g/Folico 6639",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1820",
-    "name": "Stab/Gmund Les Naturals saphir/330g/Folico 6639",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1821",
-    "name": "Stab/Gmund Gold Lime gold/310g/Folico 6640",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1822",
-    "name": "Stab/Gmund Action Nuclear Acid/310g/Offset blau",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1823",
-    "name": "Stab/Gmund Action Clear Sky blue/310g/Folico 6640",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1824",
-    "name": "Stab/Gmund Colors Matt 91/300g/Folico 6724",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1825",
-    "name": "Stab/Gmund Used 6/300g/Folico 6724",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1826",
-    "name": "Stab/Gmund Colors Matt 35/300g/Folico 6639",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1827",
-    "name": "Stab/Gmund Gold orange gold/310g/Offset neonorange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1828",
-    "name": "Stab/Gmund Gold rich copper/310g//Folico 6638",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1829",
-    "name": "Stab X-MAS/Gmund Les Naturals blue nuit/330g/Folico 6724",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1830",
-    "name": "Stab X-MAS/Gmund Gold value/310g/Folico 6719",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1831",
-    "name": "Stab X-MAS/Gmund Heather peacock/350g/Folico 6638",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1832",
-    "name": "Stab X-MAS/Gmund Used 6/300g/Folico 6724",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1833",
-    "name": "Stab X-MAS/Gmund Gold rich copper/310g/Luxor 404",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1834",
-    "name": "Stab X-MAS/Gmund Colors Matt 63/300g/Folico 6719",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1835",
-    "name": "Stab X-MAS/Gmund 925 Light Silver/310g/Luxor 220",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1836",
-    "name": "Skinny 4er/Gmund Used 6/300g/Folico 6640",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1837",
-    "name": "Skinny 4er/Gmund Used 6/300g/Folico 6639",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1838",
-    "name": "Skinny 4er/Gmund Used 6/300g/Folico 6638",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1839",
-    "name": "Skinny 4er/Gmund Matt 45/300g/Folico 6640",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1840",
-    "name": "Skinny 4er/Gmund Matt 45/300g/Folico 6639",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1841",
-    "name": "Skinny 4er/Gmund Matt 45/300g/Folico 6638",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1842",
-    "name": "Skinny 4er/Gmund Matt 11/300g/Folico 6640",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1843",
-    "name": "Skinny 4er/Gmund Matt 11/300g/Folico 6639",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1844",
-    "name": "Skinny 4er/Gmund Matt 11/300g/Folico 6638",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "1845",
     "name": "Konfetti/Gmund Matt 11/300g/Folico 6639",
     "einheit": 6,
@@ -4150,18 +2974,6 @@
     "name": "Konfetti/Gmund Used 6/300g/Folico 6638",
     "einheit": 6,
     "preis": 6.0
-  },
-  {
-    "artikelnummer": "1847",
-    "name": "Lipstick/Gmund Gold Value/310g/Folico 6638",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1848",
-    "name": "Lipstick/Gmund 925 Light Silver/310g/Luxor 220",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "1849",
@@ -4182,148 +2994,10 @@
     "preis": 10.0
   },
   {
-    "artikelnummer": "1855",
-    "name": "Umschlag C6 Old Gold",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1856",
-    "name": "Umschlag C6 Galaxy Gold",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1857",
-    "name": "Umschlag C6 Copper",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1858",
-    "name": "Umschlag C6 Soft Mulberry",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1859",
-    "name": "Umschlag C6 Plum",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1860",
-    "name": "Umschlag C6 Lagoon",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1861",
-    "name": "Umschlag C6 Electric Red",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1862",
-    "name": "Umschlag C6 Electric Yellow",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1863",
-    "name": "Umschlag C6 Electric Pink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1864",
-    "name": "Umschlag C6 Electric Orange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1865",
-    "name": "Umschlag C6 Sunset",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1866",
-    "name": "Umschlag C6 Butterscotch",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1867",
-    "name": "Umschlag C6 Aqua",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1868",
-    "name": "Umschlag C6 New Teal",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1869",
-    "name": "Umschlag C6 Purple",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1870",
-    "name": "Umschlag C6 Neo Violet",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1871",
-    "name": "Umschlag C6 Neo Shock",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1872",
-    "name": "STARBUCKS #1",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1873",
-    "name": "Stabkerze 210/21 einfarbig, coralle",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1874",
-    "name": "Handstretchcastfolie 17?m, 50 cm x 300 lfm transparent",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "1886",
     "name": "Dip Dye Special * Deliciously Dreamy",
     "einheit": 6,
     "preis": 4.0
-  },
-  {
-    "artikelnummer": "1887",
-    "name": "Kerzenlack multicolor grünblau - lila",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1888",
-    "name": "Farbkonzentrat pink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "1889",
-    "name": "Farbkonzentrat orange",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "1891",
@@ -4614,42 +3288,6 @@
     "preis": 3.0
   },
   {
-    "artikelnummer": "2006",
-    "name": "Display Lochblech 1,5 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2007",
-    "name": "Kerzenständer Lochblech 1,5 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2008",
-    "name": "Regal Lochblech 1,5 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2009",
-    "name": "L-Halter Stahlblech 1 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2010",
-    "name": "Kombihalter Stahlblech 1mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2011",
-    "name": "Säule, Lochblech 1,5 mm, 250x30x30",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "2012",
     "name": "* Schneekristall gelb",
     "einheit": 6,
@@ -4806,24 +3444,6 @@
     "preis": 4.0
   },
   {
-    "artikelnummer": "2039",
-    "name": "Rapswachs Granulat 25 kg",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2040",
-    "name": "Stabkerze Halbfertigerzeugnis",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2041",
-    "name": "Halbfertigerzeugnis Grußkarte",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "2042",
     "name": "Jaguar senf-pink",
     "einheit": 6,
@@ -4834,42 +3454,6 @@
     "name": "Bubble Birthday babyrosa-rosa",
     "einheit": 6,
     "preis": 2.25
-  },
-  {
-    "artikelnummer": "2044",
-    "name": "Restkerzen",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2045",
-    "name": "Umschläge",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2046",
-    "name": "Sperrholzplatte bedruckt",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2047",
-    "name": "Lamaband, Ballen Mini",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2048",
-    "name": "Lamaband, Ballen Medio",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2049",
-    "name": "Lamaband, Ballen Grande",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "2050",
@@ -5014,12 +3598,6 @@
     "name": "Matches * Pink \"Are you on Fire\" Give Away",
     "einheit": 6,
     "preis": 2.0
-  },
-  {
-    "artikelnummer": "2074",
-    "name": "Pulverbeschichtung Tray",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "2075",
@@ -5220,28 +3798,10 @@
     "preis": 12.0
   },
   {
-    "artikelnummer": "2108",
-    "name": "Lochblech 2000x1000 mm, RG 5-8",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2109",
-    "name": "Schneiden und Biegen Display",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "2110",
     "name": "Starterset Hole Tray A4",
     "einheit": 6,
     "preis": 108.0
-  },
-  {
-    "artikelnummer": "2111",
-    "name": "Umsatz B2C",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "2112",
@@ -5250,148 +3810,16 @@
     "preis": 6.0
   },
   {
-    "artikelnummer": "2114",
-    "name": "Eierschachtel 6er Orange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2115",
-    "name": "Eierschachtel 6er Strawberry",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "2116",
     "name": "Weihnachtsanhänger Mix",
     "einheit": 6,
     "preis": 6.0
   },
   {
-    "artikelnummer": "2117",
-    "name": "Eierschachtel 6er Pina Colada",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2118",
-    "name": "Filament PLA Vanilla 1,75 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2119",
-    "name": "Filament PLA Electric Blue 1,75 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2120",
-    "name": "Filament PLA Light Green 1,75 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2121",
-    "name": "STICKY DOTS VALUE PACK - 1600 X PEELABLE GLUE DOTS ON PERFORATED SHEETS",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "2122",
     "name": "Meeres-Anhänger Waves pink",
     "einheit": 6,
     "preis": 6.0
-  },
-  {
-    "artikelnummer": "2123",
-    "name": "Stabkerzen 150/8",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2124",
-    "name": "Organic Bamboo",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2125",
-    "name": "Duftstoff Organic Bamboo",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2126",
-    "name": "GMUND Matt 11 (rosa)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2127",
-    "name": "GMUND Matt 46 (beige)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2128",
-    "name": "GMUND Matt 86 (hellgrün)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2129",
-    "name": "Kerzenglas klar 200 ml",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2130",
-    "name": "Lochblech aus Aluminium 2500x125x1,5 RG",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2131",
-    "name": "Lochblech aus Aluminium 2500x125x1 RV",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2132",
-    "name": "Aluminium Vierkantrohr System 20x20",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2133",
-    "name": "Pulverbeschichtung Leuchthellorange Matt RAL 2007 (Grimm M0-158-2107-001)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2134",
-    "name": "Kette 12x4 mm Edelstahl 50 m",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2135",
-    "name": "Kette 12x4 mm Edelstahl 50 cm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2136",
-    "name": "Pulverbeschichtung Weiß RAL 9010",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2137",
-    "name": "Bindedraht 90 cm",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "2138",
@@ -6112,12 +4540,6 @@
     "name": "Sway 100% * Silk blue",
     "einheit": 6,
     "preis": 16.0
-  },
-  {
-    "artikelnummer": "2263",
-    "name": "Sway 150% * White",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "2264",
@@ -6978,202 +5400,10 @@
     "preis": 650.0
   },
   {
-    "artikelnummer": "2407",
-    "name": "Tray Eggs (Farbe 06)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2408",
-    "name": "Tray Eggs (Farbe 63)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2409",
-    "name": "Tray Eggs (Farbe 17)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2410",
-    "name": "Tray Eggs (Farbe 54)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2411",
-    "name": "Tray Eggs (Farbe 01)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2412",
-    "name": "Tray Eggs (Farbe 03)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2413",
-    "name": "Tray Eggs (Farbe 47)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2414",
-    "name": "Tray Eggs (Farbe 12)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2415",
-    "name": "Tray Eggs (Farbe 77)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2416",
-    "name": "Tray Eggs (Farbe 02)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2417",
-    "name": "Tray Eggs (Farbe 22)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2418",
-    "name": "Tray Eggs (Farbe 50)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2419",
-    "name": "Tray Eggs (Ei Nr. 1)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2420",
-    "name": "Tray Eggs (Ei Nr. 2)",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2421",
-    "name": "Papier \"La vie recyclé\", amande 320 g/qm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2422",
-    "name": "Stab/La vie recyclee amande/320g/Luxor 355",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2423",
-    "name": "Stab/Gmund 925 Golden Silver/310g/Luxor 220",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "2424",
     "name": "Dip Dye Skinny * Blazing Flame",
     "einheit": 6,
     "preis": 7.0
-  },
-  {
-    "artikelnummer": "2425",
-    "name": "Filament PETG Neon Pink Transparent 1,75mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2426",
-    "name": "Filament PETG Neon Orange Transparent 1,75mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2427",
-    "name": "Filament PETG Neon Yellow Transparent 1,75mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2428",
-    "name": "Filament PETG Vanilla 1,75mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2429",
-    "name": "Filament PLA Neon Orange 1,75 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2430",
-    "name": "Filament PLA Neon Yellow",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2431",
-    "name": "Filament PLA Mint 1,75 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2432",
-    "name": "Filament PLA Navy Blue 1,75 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2433",
-    "name": "Filament PETG Lilac 1,75 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2434",
-    "name": "Filament PETG Mint 1,75 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2435",
-    "name": "Filament PLA Flamingo 1,75 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2436",
-    "name": "Filament PLA Baby Pink 1,75 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2437",
-    "name": "Filament PLA White 1,75 mm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2438",
-    "name": "Papier \"La vie recyclé\", amande 420 g/qm",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "2439",
-    "name": "Regal Lochblech 1,5 mm neu (ohne Loch)",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "2440",
@@ -7192,12 +5422,6 @@
     "name": "3-D Druck Fuß S",
     "einheit": 6,
     "preis": 3.9
-  },
-  {
-    "artikelnummer": "2443",
-    "name": "Stab/La vie recyclee amande/320g/Offset CMYK 31 72 44 40",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "2444",
@@ -9108,438 +7332,6 @@
     "preis": 36.0
   },
   {
-    "artikelnummer": "4000",
-    "name": "violett-Punkte-rainbow",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4001",
-    "name": "flieder-Punkte-rainbow",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4002",
-    "name": "mint-Punkte-rainbow",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4003",
-    "name": "zitronengelb-Punkte-rainbow",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4004",
-    "name": "babyrosa-Punkte-rainbow",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4005",
-    "name": "flieder-Punkte-rainbow",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4007",
-    "name": "blush-Punkte-rainbow",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4008",
-    "name": "dirtypink-Punkte-rainbow",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4009",
-    "name": "X-Punkte-coralle",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4010",
-    "name": "X-Punkte-neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4011",
-    "name": "X-Punkte-flieder",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4012",
-    "name": "X-Punkte-coralle_mint_neongelb/neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4013",
-    "name": "flieder-Punkte-neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4014",
-    "name": "babyrosa-Punkte-coralle",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4015",
-    "name": "coralle-Punkte-goldorange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4016",
-    "name": "X-sinus-senf",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4017",
-    "name": "X-sinus-goldorange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4018",
-    "name": "X-sinus-flieder",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4019",
-    "name": "dirtypink-sinus-flieder",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4020",
-    "name": "dirtypink-sinus-coralle",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4021",
-    "name": "dirtypink-sinus-flammrot",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4022",
-    "name": "X-sinus-violett",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4023",
-    "name": "X-sinus-coralle",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4024",
-    "name": "X-sinus-neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4026",
-    "name": "flieder-sinus-jade",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4027",
-    "name": "flieder-sinus-coralle",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4028",
-    "name": "blush-sinus-neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4029",
-    "name": "neongelb-sinus-goldorange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4030",
-    "name": "mint-sinus-coralle",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4031",
-    "name": "X-curves-neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4032",
-    "name": "X.curves-coralle",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4033",
-    "name": "X-curves-flieder",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4034",
-    "name": "Dirtypink-curves-goldorange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4035",
-    "name": "Coralle-curves-flieder",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4036",
-    "name": "Violett-curves-coralle",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4037",
-    "name": "X-curves-neonpink/flammrot",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4038",
-    "name": "X.curves-goldorange/neongelb",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4039",
-    "name": "X-curves-mint/neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4040",
-    "name": "Flieder-curves-flieder",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4041",
-    "name": "Flieder-curves-mint",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4042",
-    "name": "Flieder-curves-neongelb",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4043",
-    "name": "X-linien-coralle",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4044",
-    "name": "X-linien-flammrot",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4045",
-    "name": "X-linien-neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4046",
-    "name": "X-linien-türkis",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4047",
-    "name": "X-linien-mint",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4048",
-    "name": "X-linien-flammrot",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4049",
-    "name": "Blau-dreiecke-mint",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4050",
-    "name": "Mint-dreiecke-mint",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4051",
-    "name": "X-dreiecke-flieder",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4052",
-    "name": "X-dreiecke-neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4054",
-    "name": "X-dreiecke-goldorange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4055",
-    "name": "X-curves-goldorange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4057",
-    "name": "X-ellipse-flammrot",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4060",
-    "name": "X-ellipse-violett",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4061",
-    "name": "Skinny-dots-goldorange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4062",
-    "name": "Skinny-dots-coralle",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4063",
-    "name": "Skinny-dots-neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4064",
-    "name": "Skinny-dots-rainbow",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4067",
-    "name": "Skinny-curves-goldorange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4068",
-    "name": "Skinny-curves-neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4069",
-    "name": "Skinny-curves-violett",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4070",
-    "name": "Skinny-curves-grün",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4071",
-    "name": "Skinny-curves-coralle",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4073",
-    "name": "Skinny-curves-flieder",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4074",
-    "name": "Skinny-curves-mint",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4076",
-    "name": "Skinny-lines-coralle",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4077",
-    "name": "Skinny-lines-flammrot",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4078",
-    "name": "Skinny-lines-neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4079",
-    "name": "Skinny-triangle-flieder",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4080",
-    "name": "Skinny-triangle-goldorange",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "4081",
-    "name": "Skinny-triangle-neonpink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "4090",
     "name": "Grüße aus München * Dackel",
     "einheit": 6,
@@ -9784,12 +7576,6 @@
     "name": "Dip Dye Marble * Venus",
     "einheit": 6,
     "preis": 8.0
-  },
-  {
-    "artikelnummer": "6053",
-    "name": "Dip Dye Marble * Mercury",
-    "einheit": 6,
-    "preis": NaN
   },
   {
     "artikelnummer": "6054",
@@ -11496,18 +9282,6 @@
     "preis": 0.0
   },
   {
-    "artikelnummer": "8080",
-    "name": "Schaumstoff Zuschnitt schwarz Glow",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "8081",
-    "name": "Schaumstoff Zuschnitt schwarz Sparkle",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "8100",
     "name": "n/d",
     "einheit": 6,
@@ -11562,51 +9336,9 @@
     "preis": 0.0
   },
   {
-    "artikelnummer": "8307",
-    "name": "Siebdrucklack weiß",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "8308",
-    "name": "Siebdrucklack pink",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "8309",
-    "name": "Siebdrucklack blau",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "8310",
-    "name": "Siebdrucklack gelb",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
     "artikelnummer": "8311",
     "name": "Glitzer Violett Prism (Flieder Prism)",
     "einheit": 6,
     "preis": 0.0
-  },
-  {
-    "artikelnummer": "FAIRE-COMMISSION",
-    "name": "Kommission",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "FAIRE-PAYMENT-PROCESSING-FEE",
-    "name": "FAIRE-PAYMENT-PROCESSING-FEE",
-    "einheit": 6,
-    "preis": NaN
-  },
-  {
-    "artikelnummer": "Standard-Ladehilfsmittel",
-    "name": "Standard-Ladehilfsmittel",
-    "einheit": 6,
-    "preis": NaN
   }
 ]
