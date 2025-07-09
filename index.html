@@ -111,61 +111,48 @@
   </div>
 
   <script>
-    function startForm(isBestandskunde) {
+let kunden = [], alleKunden = [], artikel = [];
+
+function startForm(isBestandskunde) {
   document.getElementById("startScreen").classList.remove("visible");
   document.getElementById("kundendaten").classList.add("visible");
   document.getElementById("bestandskundeSection").style.display = isBestandskunde ? "block" : "none";
-  document.getElementById("fortschrittText").textContent = "Schritt 2 von 4";
-  document.getElementById("fortschrittBalken").style.width = "50%";
-    }
-    function zeigeArtikelmaske() {
-      wechsleSichtbarkeit("kundendaten", "artikelmaske");
-    }
-    function zeigeZusatzinfos() {
-      wechsleSichtbarkeit("artikelmaske", "zusatzinfos");
-    }
-    function zeigeUebersicht() {
-      const vorschau = document.getElementById("auftragVorschau");
-      const firma = document.getElementById("firma").value;
-      const artikel = [...document.querySelectorAll("#artikelTabelle tbody tr")].map(row => row.innerText).join("\n");
-      const notiz = document.getElementById("abschluss_notiz").value;
-      const datum = document.getElementById("abschluss_lieferdatum").value;
-      vorschau.innerText = `Firma: ${firma}\n\nArtikel:\n${artikel}\n\nLieferdatum: ${datum}\nNotiz: ${notiz}`;
-      wechsleSichtbarkeit("zusatzinfos", "uebersicht");
-    }
-    function wechsleSichtbarkeit(von, zu) {
+  updateFortschritt(2);
+}
+
+function zeigeArtikelmaske() {
+  wechsleSichtbarkeit("kundendaten", "artikelmaske");
+  updateFortschritt(3);
+}
+
+function zeigeZusatzinfos() {
+  wechsleSichtbarkeit("artikelmaske", "zusatzinfos");
+  updateFortschritt(4);
+}
+
+function zeigeUebersicht() {
+  const vorschau = document.getElementById("auftragVorschau");
+  const firma = document.getElementById("firma").value;
+  const artikel = [...document.querySelectorAll("#artikelTabelle tbody tr")].map(row => row.innerText).join("\n");
+  const notiz = document.getElementById("abschluss_notiz").value;
+  const datum = document.getElementById("abschluss_lieferdatum").value;
+  vorschau.innerText = `Firma: ${firma}\n\nArtikel:\n${artikel}\n\nLieferdatum: ${datum}\nNotiz: ${notiz}`;
+  wechsleSichtbarkeit("zusatzinfos", "uebersicht");
+  updateFortschritt(4);
+}
+
+function wechsleSichtbarkeit(von, zu) {
   document.getElementById(von).classList.remove("visible");
   document.getElementById(zu).classList.add("visible");
-  const fortschritt = document.getElementById("fortschritt");
-  const schritte = {
-    startScreen: 1,
-    kundendaten: 2,
-    artikelmaske: 3,
-    zusatzinfos: 4,
-    uebersicht: 5
-  };
-  if (fortschritt && schritte[zu]) {
-    const max = 4;
-    const aktuell = Math.min(schritte[zu], max);
-    document.getElementById("fortschrittText").textContent = `Schritt ${aktuell} von ${max}`;
-    document.getElementById("fortschrittBalken").style.width = `${(aktuell / max) * 100}%`;
-  }
 }
-  let kunden = [];
-let alleKunden = [];
-fetch("kunden.json")
-  .then(res => res.json())
-  .then(data => {
-    kunden = data;
-alleKunden = data.slice();
-    const select = document.getElementById("kundeSelect");
-    kunden.forEach(k => {
-      const opt = document.createElement("option");
-      opt.value = k.name.replace(/^\*/, '').trim();
-      opt.textContent = k.name.replace(/^\*/, '').trim();
-      select.appendChild(opt);
-    });
-  });
+
+function updateFortschritt(schritt) {
+  const max = 4;
+  const balken = document.getElementById("fortschrittBalken");
+  const text = document.getElementById("fortschrittText");
+  balken.style.width = `${(schritt / max) * 100}%`;
+  text.textContent = `Schritt ${schritt} von ${max}`;
+}
 
 function filterKunden() {
   const suchbegriff = document.getElementById("kundensuche").value.toLowerCase();
@@ -178,13 +165,10 @@ function filterKunden() {
     opt.textContent = k.name.replace(/^\*/, '').trim();
     select.appendChild(opt);
   });
-
-  // Automatisch auswählen, wenn genau ein Treffer
   if (gefiltert.length === 1) {
     select.selectedIndex = 1;
     fuelleKundendaten();
   }
-}
 }
 
 function fuelleKundendaten() {
@@ -203,127 +187,65 @@ function fuelleKundendaten() {
     document.getElementById("ustid").value = kunde.ustid || "";
   }
 }
-</script>
-<div id="checkBereich" style="margin-top:2rem; font-size:0.9rem; color:#999; text-align:center;">
-  <button onclick="checkStatus()">🔍 Check Kundenliste</button>
-  <div id="checkErgebnis" style="margin-top:0.5rem;"></div>
-</div>
 
-<script>
-function checkStatus() {
+function checkDaten() {
   const info = document.getElementById("checkErgebnis");
-  info.textContent = "Prüfe Verbindung zu kunden.json ...";
+  let kundenOk = false;
+  let artikelOk = false;
+
   fetch("kunden.json")
     .then(res => {
-      if (!res.ok) throw new Error("Status " + res.status);
+      if (!res.ok) throw new Error("Kundenliste nicht gefunden");
       return res.json();
     })
     .then(data => {
-      if (Array.isArray(data) && data.length > 0) {
-        info.style.color = "green";
-        info.textContent = `✅ ${data.length} Kunden geladen.`;
-        window._kunden_ok = true;
-        hideCheckButtonsIfReady();
-      } else {
-        info.style.color = "orange";
-        info.textContent = "⚠️ Datei geladen, aber keine Kunden gefunden.";
-      }
+      kunden = data;
+      alleKunden = data.slice();
+      kundenOk = true;
+      info.innerHTML = `✅ ${data.length} Kunden geladen.`;
+      const select = document.getElementById("kundeSelect");
+      data.forEach(k => {
+        const opt = document.createElement("option");
+        opt.value = k.name.replace(/^\*/, '').trim();
+        opt.textContent = k.name.replace(/^\*/, '').trim();
+        select.appendChild(opt);
+      });
+      hideCheckButtonsIfReady();
     })
     .catch(err => {
+      info.innerHTML = `❌ Fehler beim Laden von kunden.json: ${err.message}`;
       info.style.color = "red";
-      info.textContent = `❌ Fehler beim Laden von kunden.json: ${err.message}`;
     });
-}
 
-function checkArtikel() {
-  const info = document.getElementById("checkErgebnis");
-  info.textContent = "Prüfe Verbindung zu artikel.json ...";
   fetch("artikel.json")
     .then(res => {
-      if (!res.ok) throw new Error("Status " + res.status);
+      if (!res.ok) throw new Error("Artikelliste nicht gefunden");
       return res.json();
     })
     .then(data => {
-      if (Array.isArray(data) && data.length > 0) {
-        info.style.color = "green";
-        info.textContent = `✅ ${data.length} Artikel geladen.`;
-        window._artikel_ok = true;
-        hideCheckButtonsIfReady();
-      } else {
-        info.style.color = "orange";
-        info.textContent = "⚠️ Datei geladen, aber keine Artikel gefunden.";
-      }
+      artikel = data;
+      artikelOk = true;
+      info.innerHTML += `<br>✅ ${data.length} Artikel geladen.`;
+      hideCheckButtonsIfReady();
     })
     .catch(err => {
+      info.innerHTML += `<br>❌ Fehler beim Laden von artikel.json: ${err.message}`;
       info.style.color = "red";
-      info.textContent = `❌ Fehler beim Laden von artikel.json: ${err.message}`;
     });
-}
 
-function hideCheckButtonsIfReady() {
-  if (window._kunden_ok && window._artikel_ok) {
-    const checkDiv = document.getElementById("checkBereich");
-    if (checkDiv) checkDiv.style.display = "none";
+  function hideCheckButtonsIfReady() {
+    if (kunden.length > 0 && artikel.length > 0) {
+      document.getElementById("checkBereich").style.display = "none";
+    }
   }
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  checkStatus();
-  checkArtikel();
+  checkDaten();
 });
 </script>
-<div style="margin-top:2rem; font-size:0.9rem; color:#999; text-align:center;">
-  <button onclick="checkStatus()">🔍 Check Kundenliste</button>
-  <button onclick="checkArtikel()">📦 Check Artikelliste</button>
+
+<!-- Bereich zum Überprüfen -->
+<div id="checkBereich" style="margin-top:2rem; font-size:0.9rem; color:#999; text-align:center;">
   <div id="checkErgebnis" style="margin-top:0.5rem;"></div>
 </div>
-
-<script>
-function checkStatus() {
-  const info = document.getElementById("checkErgebnis");
-  info.textContent = "Prüfe Verbindung zu kunden.json ...";
-  fetch("kunden.json")
-    .then(res => {
-      if (!res.ok) throw new Error("Status " + res.status);
-      return res.json();
-    })
-    .then(data => {
-      if (Array.isArray(data) && data.length > 0) {
-        info.style.color = "green";
-        info.textContent = `✅ ${data.length} Kunden geladen.`;
-      } else {
-        info.style.color = "orange";
-        info.textContent = "⚠️ Datei geladen, aber keine Kunden gefunden.";
-      }
-    })
-    .catch(err => {
-      info.style.color = "red";
-      info.textContent = `❌ Fehler beim Laden von kunden.json: ${err.message}`;
-    });
-}
-
-function checkArtikel() {
-  const info = document.getElementById("checkErgebnis");
-  info.textContent = "Prüfe Verbindung zu artikel.json ...";
-  fetch("artikel.json")
-    .then(res => {
-      if (!res.ok) throw new Error("Status " + res.status);
-      return res.json();
-    })
-    .then(data => {
-      if (Array.isArray(data) && data.length > 0) {
-        info.style.color = "green";
-        info.textContent = `✅ ${data.length} Artikel geladen.`;
-      } else {
-        info.style.color = "orange";
-        info.textContent = "⚠️ Datei geladen, aber keine Artikel gefunden.";
-      }
-    })
-    .catch(err => {
-      info.style.color = "red";
-      info.textContent = `❌ Fehler beim Laden von artikel.json: ${err.message}`;
-    });
-}
-</script>
-</body>
-</html>
