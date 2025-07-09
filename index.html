@@ -61,4 +61,27 @@
   </style>
 </head>
 <body>
-  <!-- Restlicher Inhalt bleibt unverändert -->
+  <div style="text-align:center; margin-bottom: 1rem;">
+    <img src="https://www.pinkstories.de/media/image/79/99/1d/logo_pinkstories_600px.png" alt="Pink Stories Logo" style="max-width:200px; height:auto;" />
+  </div>
+  <div id="fortschritt">
+    <div style="background:#ddd; height:1rem; border-radius:1rem; overflow:hidden;">
+      <div id="fortschrittBalken" style="height:100%; width:25%; transition: width 0.3s;"></div>
+    </div>
+    <div id="fortschrittText" style="margin-top:0.5rem; font-weight: bold; text-align: center;">Schritt 1 von 4</div>
+  </div>
+  <h1>Auftragserfassung</h1>
+
+  <div id="startScreen" class="visible">
+    <button onclick="startForm(true)">Bestandskunde</button>
+    <button onclick="startForm(false)">Neukunde</button>
+  </div>
+
+  <!-- Weitere Sektionen wie Kundendaten, Artikelerfassung, Zusatzinfos usw. hier einfügen -->
+
+  <!-- Hinweis für Benutzer falls Inhalt fehlt -->
+  <noscript>
+    <p>Bitte aktiviere JavaScript, um das Formular zu verwenden.</p>
+  </noscript>
+</body>
+</html>
