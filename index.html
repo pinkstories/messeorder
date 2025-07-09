@@ -52,12 +52,6 @@
     .visible {
       display: block;
     }
-    #fortschritt {
-      margin-bottom: 1rem;
-    }
-    #fortschrittBalken {
-      background: #d14e67;
-    }
     .plus { background-color: #4caf50; color: white; border: none; padding: 0.2rem 0.6rem; margin: 0 0.25rem; border-radius: 4px; }
     .minus { background-color: #f44336; color: white; border: none; padding: 0.2rem 0.6rem; margin: 0 0.25rem; border-radius: 4px; }
   </style>
@@ -164,11 +158,12 @@
       document.getElementById("kundenzusammenfassung").innerHTML = `<p><strong>${firma}</strong><br>${vorname} ${nachname}<br>${adresse}, ${plz} ${ort}</p>`;
       document.getElementById("kundendatenSection").classList.remove("visible");
       document.getElementById("artikelSection").classList.add("visible");
+      document.getElementById("startScreen").style.display = "none";
     }
 
     function sucheKunde() {
       const name = document.getElementById("firma").value.trim().toLowerCase();
-      const kunde = kunden.find(k => k.name?.toLowerCase() === name);
+      const kunde = kunden.find(k => (k.name || "").toLowerCase() === name);
       if (kunde) {
         document.getElementById("vorname").value = kunde.vorname || "";
         document.getElementById("nachname").value = kunde.nachname || "";
@@ -180,9 +175,9 @@
 
     function sucheArtikel() {
       const nummer = document.getElementById("artikelnummer").value.trim().toLowerCase();
-      const gefunden = artikel.find(a => a.artikelnummer?.toLowerCase?.() === nummer);
+      const gefunden = artikel.find(a => (a.artikelnummer || a.nummer || "").toLowerCase() === nummer);
       if (gefunden) {
-        document.getElementById("artikelname").value = gefunden.name;
+        document.getElementById("artikelname").value = gefunden.name || gefunden.artikelname || "";
         const einheit = parseInt(gefunden.einheit || 1);
         document.getElementById("anzahl").value = einheit;
         setTimeout(() => addArticle(), 300);
@@ -195,14 +190,14 @@
     function addArticle() {
       const nummer = document.getElementById("artikelnummer").value.trim().toLowerCase();
       const menge = parseInt(document.getElementById("anzahl").value);
-      const art = artikel.find(a => a.artikelnummer?.toLowerCase?.() === nummer);
+      const art = artikel.find(a => (a.artikelnummer || a.nummer || "").toLowerCase() === nummer);
       if (!art || isNaN(menge) || menge <= 0) return;
 
       const vorhanden = warenkorb.find(p => p.nummer.toLowerCase() === nummer);
       if (vorhanden) {
         vorhanden.menge += menge;
       } else {
-        warenkorb.push({ nummer: art.artikelnummer, name: art.name, menge: menge, preis: parseFloat(art.preis || 0) });
+        warenkorb.push({ nummer: art.artikelnummer || art.nummer, name: art.name || art.artikelname, menge: menge, preis: parseFloat(art.preis || 0) });
       }
 
       aktualisiereTabelle();
