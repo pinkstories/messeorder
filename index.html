@@ -191,15 +191,31 @@
       document.getElementById("anzahl").value = "";
     }
 
+    function aendereMenge(index, delta) {
+      warenkorb[index].menge += delta;
+      if (warenkorb[index].menge <= 0) warenkorb.splice(index, 1);
+      aktualisiereTabelle();
+    }
+
     function aktualisiereTabelle() {
       const tbody = document.querySelector("#artikelTabelle tbody");
       tbody.innerHTML = "";
       let gesamt = 0;
-      warenkorb.forEach(art => {
-        const zeile = document.createElement("tr");
+      warenkorb.forEach((art, index) => {
         const gesamtpreis = art.menge * art.preis;
         gesamt += gesamtpreis;
-        zeile.innerHTML = `<td>${art.nummer}</td><td>${art.name}</td><td>${art.menge}</td><td>${art.preis.toFixed(2)}</td><td>${gesamtpreis.toFixed(2)}</td>`;
+        const zeile = document.createElement("tr");
+        zeile.innerHTML = `
+          <td>${art.nummer}</td>
+          <td>${art.name}</td>
+          <td>
+            <button onclick="aendereMenge(${index}, -1)">–</button>
+            ${art.menge}
+            <button onclick="aendereMenge(${index}, 1)">+</button>
+          </td>
+          <td>${art.preis.toFixed(2)}</td>
+          <td>${gesamtpreis.toFixed(2)}</td>
+        `;
         tbody.appendChild(zeile);
       });
       document.getElementById("gesamtwert").textContent = `${gesamt.toFixed(2)} €`;
