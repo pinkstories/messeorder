@@ -34,10 +34,11 @@
   <!-- Schritt 2 -->
   <div id="kundendaten" class="section">
     <div id="bestandskundeSection">
-      <label>Bestandskunde:</label>
-      <select id="kundeSelect" onchange="fuelleKundendaten()">
-        <option value="">Kunde auswählen</option>
-      </select>
+  <label>Bestandskunde suchen:</label>
+  <input type="text" id="kundensuche" oninput="filterKunden()" placeholder="Kunde suchen..." />
+  <select id="kundeSelect" onchange="fuelleKundendaten()">
+    <option value="">Kunde auswählen</option>
+  </select>
     </div>
 
     <label>Firmenname:</label>
@@ -151,10 +152,12 @@
   }
 }
   let kunden = [];
+let alleKunden = [];
 fetch("kunden.json")
   .then(res => res.json())
   .then(data => {
     kunden = data;
+alleKunden = data.slice();
     const select = document.getElementById("kundeSelect");
     kunden.forEach(k => {
       const opt = document.createElement("option");
@@ -163,6 +166,19 @@ fetch("kunden.json")
       select.appendChild(opt);
     });
   });
+
+function filterKunden() {
+  const suchbegriff = document.getElementById("kundensuche").value.toLowerCase();
+  const select = document.getElementById("kundeSelect");
+  select.innerHTML = '<option value="">Kunde auswählen</option>';
+  const gefiltert = alleKunden.filter(k => k.name.toLowerCase().includes(suchbegriff));
+  gefiltert.forEach(k => {
+    const opt = document.createElement("option");
+    opt.value = k.name.replace(/^\*/, '').trim();
+    opt.textContent = k.name.replace(/^\*/, '').trim();
+    select.appendChild(opt);
+  });
+}
 
 function fuelleKundendaten() {
   const auswahl = document.getElementById("kundeSelect").value;
