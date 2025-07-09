@@ -77,8 +77,14 @@
   </style>
 </head>
 <body>
-  <h1>Artikel erfassen</h1>
-  <div>
+  <h1>Willkommen zur Auftragserfassung</h1>
+  <div id="startScreen" class="visible">
+    <button onclick="startForm(true)">Bestandskunde</button>
+    <button onclick="startForm(false)">Neukunde</button>
+  </div>
+
+  <div id="artikelSection" class="section">
+    <h2>Artikel erfassen</h2>
     <label>Artikelnummer:</label>
     <input type="text" id="artikelnummer" oninput="sucheArtikel()" placeholder="Artikelnummer eingeben oder scannen" />
 
@@ -118,6 +124,11 @@
       .then(res => res.json())
       .then(data => artikel = data)
       .catch(() => alert("❌ Fehler beim Laden der Artikelliste."));
+
+    function startForm(isBestandskunde) {
+      document.getElementById("startScreen").classList.remove("visible");
+      document.getElementById("artikelSection").classList.add("visible");
+    }
 
     function sucheArtikel() {
       const nummer = document.getElementById("artikelnummer").value.trim().toLowerCase();
