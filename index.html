@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -180,6 +179,35 @@ function fuelleKundendaten() {
     document.getElementById("telefon").value = kunde.telefon || "";
     document.getElementById("ustid").value = kunde.ustid || "";
   }
+}
+</script>
+<div style="margin-top:2rem; font-size:0.9rem; color:#999; text-align:center;">
+  <button onclick="checkStatus()">🔍 Check Kundenliste</button>
+  <div id="checkErgebnis" style="margin-top:0.5rem;"></div>
+</div>
+
+<script>
+function checkStatus() {
+  const info = document.getElementById("checkErgebnis");
+  info.textContent = "Prüfe Verbindung zu kunden.json ...";
+  fetch("kunden.json")
+    .then(res => {
+      if (!res.ok) throw new Error("Status " + res.status);
+      return res.json();
+    })
+    .then(data => {
+      if (Array.isArray(data) && data.length > 0) {
+        info.style.color = "green";
+        info.textContent = `✅ ${data.length} Kunden geladen.`;
+      } else {
+        info.style.color = "orange";
+        info.textContent = "⚠️ Datei geladen, aber keine Kunden gefunden.";
+      }
+    })
+    .catch(err => {
+      info.style.color = "red";
+      info.textContent = `❌ Fehler beim Laden von kunden.json: ${err.message}`;
+    });
 }
 </script>
 </body>
