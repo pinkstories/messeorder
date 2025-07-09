@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -90,106 +91,6 @@
 </head>
 <body>
   <h1>Messeorder trendset</h1>
-
-  <div id="startScreen" class="visible">
-    <button onclick="zeigeKundendaten(true)">Bestandskunde</button>
-    <button onclick="zeigeKundendaten(false)">Neukunde</button>
-  </div>
-
-  <div id="kundendatenSection" class="section">
-    <h2>Kundendaten</h2>
-    <div id="kundenformular">
-      <label>Firmenname:</label>
-      <input type="text" id="firma" oninput="sucheKunde()" list="firmenliste" />
-      <datalist id="firmenliste"></datalist>
-      <label>Vorname:</label>
-      <input type="text" id="vorname" />
-      <label>Nachname:</label>
-      <input type="text" id="nachname" />
-      <label>Adresse:</label>
-      <input type="text" id="adresse" />
-      <label>PLZ:</label>
-      <input type="text" id="plz" />
-      <label>Ort:</label>
-      <input type="text" id="ort" />
-      <button onclick="zeigeKundenZusammenfassung()">Weiter</button>
-    </div>
-    <div id="kundenausgabe"></div>
-    <button onclick="zurueckZuStart()">Zurück</button>
-  </div>
-
-  <div id="artikelSection" class="section">
-    <h2>Artikel erfassen</h2>
-    <label>Artikelnummer:</label>
-    <input type="text" id="artikelnummer" oninput="sucheArtikel()" placeholder="Artikelnummer eingeben oder scannen" />
-
-    <label>Artikelname:</label>
-    <input type="text" id="artikelname" readonly />
-
-    <label>Anzahl:</label>
-    <input type="number" id="anzahl" placeholder="Menge" min="1" />
-
-    <button onclick="addArticle()">Artikel hinzufügen</button>
-
-    <table id="artikelTabelle">
-      <thead>
-        <tr>
-          <th>Artikelnummer</th>
-          <th>Artikelname</th>
-          <th>Anzahl</th>
-          <th>Einzelpreis (€)</th>
-          <th>Gesamtpreis (€)</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-
-    <h3>Aktueller Auftragswert: <span id="gesamtwert">0.00 €</span></h3>
-    <button onclick="kundeBearbeiten()">Zurück</button>
-  </div>
-
   <div id="testausgabe"></div>
-
-  <script>
-    let kunden = [], artikel = [], warenkorb = [];
-
-    fetch("kunden.json")
-      .then(res => res.json())
-      .then(data => {
-        kunden = data;
-        const liste = document.getElementById("firmenliste");
-        liste.innerHTML = "";
-        data.forEach(k => {
-          const opt = document.createElement("option");
-          opt.value = k.name;
-          liste.appendChild(opt);
-        });
-      });
-
-    fetch("artikel.json")
-      .then(res => res.json())
-      .then(data => artikel = data);
-
-    function testeJsonDaten() {
-      const testfeld = document.getElementById("testausgabe");
-      let output = "";
-
-      if (kunden.length > 0) {
-        output += `✅ ${kunden.length} Kunden geladen<br>`;
-      } else {
-        output += `❌ Keine Kunden gefunden<br>`;
-      }
-
-      if (artikel.length > 0) {
-        output += `✅ ${artikel.length} Artikel geladen<br>`;
-      } else {
-        output += `❌ Keine Artikel gefunden<br>`;
-      }
-
-      testfeld.innerHTML = output;
-    }
-
-    window.addEventListener("DOMContentLoaded", testeJsonDaten);
-  </script>
 </body>
 </html>
