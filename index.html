@@ -77,160 +77,36 @@
   </style>
 </head>
 <body>
-  <div style="text-align:center; margin-bottom: 1rem;">
-    <img src="Logo Pink Stories.png" alt="Pink Stories Logo" style="max-width:200px; height:auto;" />
-  </div>
-  <div id="fortschritt">
-    <div style="background:#ddd; height:1rem; border-radius:1rem; overflow:hidden;">
-      <div id="fortschrittBalken" style="height:100%; width:25%; transition: width 0.3s;"></div>
-    </div>
-    <div id="fortschrittText" style="margin-top:0.5rem; font-weight: bold; text-align: center;">Schritt 1 von 4</div>
-  </div>
-  <h1>Auftragserfassung</h1>
-
-  <div id="startScreen" class="visible">
-    <button onclick="startForm(true)">Bestandskunde</button>
-    <button onclick="startForm(false)">Neukunde</button>
-  </div>
-
-  <!-- Schritt 2 -->
-  <div id="kundendaten" class="section">
-    <div id="bestandskundeSection">
-      <label>Bestandskunde suchen:</label>
-      <input type="text" id="kundensuche" oninput="filterKunden()" placeholder="Firmennamen eingeben..." autocomplete="off" />
-      <div id="autocompleteList" class="autocomplete-list"></div>
-    </div>
-    <label>Firmenname:</label>
-    <input type="text" id="firma" />
-    <label>Vorname:</label>
-    <input type="text" id="vorname" />
-    <label>Nachname:</label>
-    <input type="text" id="nachname" />
-    <label>Straße + Hausnummer:</label>
-    <input type="text" id="strasse" required />
-    <label>PLZ:</label>
-    <input type="text" id="plz" required />
-    <label>Ort:</label>
-    <input type="text" id="ort" required />
-    <label>Land:</label>
-    <input type="text" id="land" value="Deutschland" />
-    <label>E-Mail:</label>
-    <input type="email" id="email" />
-    <label>Telefon:</label>
-    <input type="text" id="telefon" />
-    <label>USt-IdNr. (nur außerhalb DE/EU):</label>
-    <input type="text" id="ustid" />
-
-    <button type="button" onclick="zeigeArtikelmaske()">Weiter</button>
-    <button type="button" onclick="wechsleSichtbarkeit('kundendaten', 'startScreen'); updateFortschritt(1);">Zurück</button>
-  </div>
-
-  <!-- Schritt 3 -->
-  <div id="artikelmaske" class="section">
-    <h2>Artikel erfassen</h2>
-    <input type="text" id="artikelnummer" placeholder="Artikelnummer scannen/eingeben" oninput="sucheArtikel()" />
-    <input type="text" id="artikelname" placeholder="Artikelname" readonly />
-    <input type="number" id="anzahl" placeholder="Anzahl" min="1" />
-    <button type="button" onclick="addArticle()">Artikel hinzufügen</button>
-
-    <table id="artikelTabelle">
-      <thead>
-        <tr>
-          <th>Artikelnummer</th>
-          <th>Artikelname</th>
-          <th>Anzahl</th>
-          <th>Einzelpreis (€)</th>
-          <th>Gesamtpreis (€)</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-
-    <h3>Aktueller Auftragswert: <span id="gesamtwert">0.00 €</span></h3>
-    <button type="button" onclick="zeigeZusatzinfos()">Weiter</button>
-    <button type="button" onclick="wechsleSichtbarkeit('artikelmaske', 'kundendaten'); updateFortschritt(2);">Zurück</button>
-  </div>
-
-  <!-- Schritt 4 -->
-  <div id="zusatzinfos" class="section">
-    <label>Gewünschtes Lieferdatum:</label>
-    <input type="date" id="abschluss_lieferdatum" />
-    <label>Notiz zum Auftrag:</label>
-    <textarea id="abschluss_notiz"></textarea>
-    <button type="button" onclick="zeigeUebersicht()">Zur Übersicht</button>
-    <button type="button" onclick="wechsleSichtbarkeit('zusatzinfos', 'artikelmaske'); updateFortschritt(3);">Zurück</button>
-  </div>
-
-  <!-- Schritt 5 -->
-  <div id="uebersicht" class="section">
-    <h2>Übersicht & Bestätigung</h2>
-    <div id="auftragVorschau"></div>
-    <button type="button">Auftrag speichern</button>
-    <button type="button" onclick="wechsleSichtbarkeit('uebersicht', 'zusatzinfos'); updateFortschritt(4);">Zurück</button>
-  </div>
-
   <script>
     let kunden = [], artikel = [], warenkorb = [];
 
-    fetch("kunden.json").then(res => res.json()).then(data => kunden = data);
-    fetch("artikel.json").then(res => res.json()).then(data => artikel = data);
+    fetch("kunden.json")
+      .then(res => res.json())
+      .then(data => kunden = data)
+      .catch(() => alert("❌ Fehler beim Laden der Kundenliste."));
 
-    function startForm(isBestandskunde) {
-      document.getElementById("startScreen").classList.remove("visible");
-      document.getElementById("kundendaten").classList.add("visible");
-      document.getElementById("bestandskundeSection").style.display = isBestandskunde ? "block" : "none";
-      updateFortschritt(2);
-    }
-
-    function zeigeArtikelmaske() {
-      wechsleSichtbarkeit("kundendaten", "artikelmaske");
-      updateFortschritt(3);
-    }
-
-    function zeigeZusatzinfos() {
-      wechsleSichtbarkeit("artikelmaske", "zusatzinfos");
-      updateFortschritt(4);
-    }
-
-    function zeigeUebersicht() {
-      const vorschau = document.getElementById("auftragVorschau");
-      const firma = document.getElementById("firma").value;
-      const artikelList = warenkorb.map(a => `${a.nummer} - ${a.name} x${a.menge} = ${(a.preis * a.menge).toFixed(2)}€`).join("\n");
-      const notiz = document.getElementById("abschluss_notiz").value;
-      const datum = document.getElementById("abschluss_lieferdatum").value;
-      vorschau.innerText = `Firma: ${firma}\n\nArtikel:\n${artikelList}\n\nLieferdatum: ${datum}\nNotiz: ${notiz}`;
-      wechsleSichtbarkeit("zusatzinfos", "uebersicht");
-      updateFortschritt(4);
-    }
-
-    function updateFortschritt(schritt) {
-      const max = 4;
-      document.getElementById("fortschrittBalken").style.width = `${(schritt / max) * 100}%`;
-      document.getElementById("fortschrittText").textContent = `Schritt ${schritt} von ${max}`;
-    }
-
-    function wechsleSichtbarkeit(von, zu) {
-      document.getElementById(von).classList.remove("visible");
-      document.getElementById(zu).classList.add("visible");
-    }
+    fetch("artikel.json")
+      .then(res => res.json())
+      .then(data => artikel = data)
+      .catch(() => alert("❌ Fehler beim Laden der Artikelliste."));
 
     function sucheArtikel() {
-      const nummer = document.getElementById("artikelnummer").value.trim();
-      const gefunden = artikel.find(a => a.Artikelnummer === nummer);
+      const nummer = document.getElementById("artikelnummer").value.trim().toLowerCase();
+      const gefunden = artikel.find(a => a.Artikelnummer?.toLowerCase?.() === nummer);
       document.getElementById("artikelname").value = gefunden ? gefunden.Artikelname : "";
     }
 
     function addArticle() {
-      const nummer = document.getElementById("artikelnummer").value.trim();
+      const nummer = document.getElementById("artikelnummer").value.trim().toLowerCase();
       const menge = parseInt(document.getElementById("anzahl").value);
-      const art = artikel.find(a => a.Artikelnummer === nummer);
+      const art = artikel.find(a => a.Artikelnummer?.toLowerCase?.() === nummer);
       if (!art || isNaN(menge) || menge <= 0) return;
       const preis = parseFloat(art.Einzelpreis || 0);
-      warenkorb.push({ nummer: nummer, name: art.Artikelname, menge: menge, preis: preis });
+      warenkorb.push({ nummer: art.Artikelnummer, name: art.Artikelname, menge: menge, preis: preis });
 
       const tbody = document.querySelector("#artikelTabelle tbody");
       const zeile = document.createElement("tr");
-      zeile.innerHTML = `<td>${nummer}</td><td>${art.Artikelname}</td><td>${menge}</td><td>${preis.toFixed(2)}</td><td>${(menge * preis).toFixed(2)}</td>`;
+      zeile.innerHTML = `<td>${art.Artikelnummer}</td><td>${art.Artikelname}</td><td>${menge}</td><td>${preis.toFixed(2)}</td><td>${(menge * preis).toFixed(2)}</td>`;
       tbody.appendChild(zeile);
 
       const gesamt = warenkorb.reduce((sum, a) => sum + a.menge * a.preis, 0);
@@ -239,31 +115,6 @@
       document.getElementById("artikelnummer").value = "";
       document.getElementById("artikelname").value = "";
       document.getElementById("anzahl").value = "";
-    }
-
-    function filterKunden() {
-      const eingabe = document.getElementById("kundensuche").value.toLowerCase();
-      const list = document.getElementById("autocompleteList");
-      list.innerHTML = "";
-      kunden.filter(k => k.name.toLowerCase().includes(eingabe)).forEach(kunde => {
-        const item = document.createElement("div");
-        item.className = "autocomplete-item";
-        item.textContent = kunde.name;
-        item.onclick = () => {
-          document.getElementById("firma").value = kunde.name;
-          document.getElementById("vorname").value = kunde.vorname || "";
-          document.getElementById("nachname").value = kunde.nachname || "";
-          document.getElementById("strasse").value = kunde.strasse || "";
-          document.getElementById("plz").value = kunde.plz || "";
-          document.getElementById("ort").value = kunde.ort || "";
-          document.getElementById("land").value = kunde.land || "Deutschland";
-          document.getElementById("email").value = kunde.email || "";
-          document.getElementById("telefon").value = kunde.telefon || "";
-          document.getElementById("ustid").value = kunde.ustid || "";
-          list.innerHTML = "";
-        };
-        list.appendChild(item);
-      });
     }
   </script>
 </body>
