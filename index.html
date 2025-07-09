@@ -77,6 +77,35 @@
   </style>
 </head>
 <body>
+  <h1>Artikel erfassen</h1>
+  <div>
+    <label>Artikelnummer:</label>
+    <input type="text" id="artikelnummer" oninput="sucheArtikel()" placeholder="Artikelnummer eingeben oder scannen" />
+
+    <label>Artikelname:</label>
+    <input type="text" id="artikelname" readonly />
+
+    <label>Anzahl:</label>
+    <input type="number" id="anzahl" placeholder="Menge" min="1" />
+
+    <button onclick="addArticle()">Artikel hinzufügen</button>
+
+    <table id="artikelTabelle">
+      <thead>
+        <tr>
+          <th>Artikelnummer</th>
+          <th>Artikelname</th>
+          <th>Anzahl</th>
+          <th>Einzelpreis (€)</th>
+          <th>Gesamtpreis (€)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h3>Aktueller Auftragswert: <span id="gesamtwert">0.00 €</span></h3>
+  </div>
+
   <script>
     let kunden = [], artikel = [], warenkorb = [];
 
