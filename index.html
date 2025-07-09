@@ -58,29 +58,30 @@
     #fortschrittBalken {
       background: #d14e67;
     }
-    .autocomplete-list {
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      max-height: 150px;
-      overflow-y: auto;
-      background: white;
-      position: absolute;
-      z-index: 10;
-    }
-    .autocomplete-item {
-      padding: 8px;
-      cursor: pointer;
-    }
-    .autocomplete-item:hover {
-      background: #ffe5ea;
-    }
   </style>
 </head>
 <body>
   <h1>Willkommen zur Auftragserfassung</h1>
   <div id="startScreen" class="visible">
-    <button onclick="startForm(true)">Bestandskunde</button>
-    <button onclick="startForm(false)">Neukunde</button>
+    <button onclick="zeigeKundendaten(true)">Bestandskunde</button>
+    <button onclick="zeigeKundendaten(false)">Neukunde</button>
+  </div>
+
+  <div id="kundendatenSection" class="section">
+    <h2>Kundendaten</h2>
+    <label>Firmenname:</label>
+    <input type="text" id="firma" />
+    <label>Vorname:</label>
+    <input type="text" id="vorname" />
+    <label>Nachname:</label>
+    <input type="text" id="nachname" />
+    <label>Adresse:</label>
+    <input type="text" id="adresse" />
+    <label>PLZ:</label>
+    <input type="text" id="plz" />
+    <label>Ort:</label>
+    <input type="text" id="ort" />
+    <button onclick="zeigeArtikelSection()">Weiter</button>
   </div>
 
   <div id="artikelSection" class="section">
@@ -125,8 +126,13 @@
       .then(data => artikel = data)
       .catch(() => alert("❌ Fehler beim Laden der Artikelliste."));
 
-    function startForm(isBestandskunde) {
+    function zeigeKundendaten(bestandskunde) {
       document.getElementById("startScreen").classList.remove("visible");
+      document.getElementById("kundendatenSection").classList.add("visible");
+    }
+
+    function zeigeArtikelSection() {
+      document.getElementById("kundendatenSection").classList.remove("visible");
       document.getElementById("artikelSection").classList.add("visible");
     }
 
