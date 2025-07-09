@@ -77,6 +77,9 @@
       background: #fff0f4;
       display: none;
     }
+    #zusatzinfos, #uebersicht {
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
@@ -137,6 +140,24 @@
 
     <h3>Aktueller Auftragswert: <span id="gesamtwert">0.00 €</span></h3>
     <button onclick="zeigeKundendaten(true)">Zurück</button>
+    <button onclick="zeigeZusatzinfos()">Weiter</button>
+  </div>
+
+  <div id="zusatzinfos" class="section">
+    <h2>Zusätzliche Informationen</h2>
+    <label>Gewünschtes Lieferdatum:</label>
+    <input type="date" id="lieferdatum" />
+    <label>Notiz zum Auftrag:</label>
+    <textarea id="notiz"></textarea>
+    <button onclick="zeigeArtikelSection()">Zurück</button>
+    <button onclick="zeigeUebersicht()">Zur Übersicht</button>
+  </div>
+
+  <div id="uebersicht" class="section">
+    <h2>Auftragsübersicht</h2>
+    <div id="uebersichtInhalt"></div>
+    <button onclick="zeigeZusatzinfos()">Zurück</button>
+    <button onclick="alert('Auftrag gespeichert!')">Auftrag speichern</button>
   </div>
 
   <script>
@@ -183,8 +204,35 @@
       block.style.display = "block";
       block.innerHTML = `<strong>${firma}</strong><br>${vorname} ${nachname}<br>${adresse}, ${plz} ${ort}`;
 
-      document.getElementById("kundendatenSection").classList.remove("visible");
+      document.querySelectorAll(".section").forEach(s => s.classList.remove("visible"));
       document.getElementById("artikelSection").classList.add("visible");
+    }
+
+    function zeigeZusatzinfos() {
+      document.querySelectorAll(".section").forEach(s => s.classList.remove("visible"));
+      document.getElementById("zusatzinfos").classList.add("visible");
+    }
+
+    function zeigeUebersicht() {
+      const block = document.getElementById("uebersichtInhalt");
+      const lieferdatum = document.getElementById("lieferdatum").value;
+      const notiz = document.getElementById("notiz").value;
+
+      let html = `<h3>Kunde</h3>${document.getElementById("kundenausgabe").innerHTML}`;
+      html += `<h3>Lieferdatum</h3><p>${lieferdatum}</p>`;
+      html += `<h3>Notiz</h3><p>${notiz}</p>`;
+      html += `<h3>Artikel</h3><ul>`;
+      let gesamt = 0;
+      warenkorb.forEach(art => {
+        const summe = art.menge * art.preis;
+        gesamt += summe;
+        html += `<li>${art.menge} × ${art.name} (${art.nummer}) – ${summe.toFixed(2)} €</li>`;
+      });
+      html += `</ul><p><strong>Gesamt: ${gesamt.toFixed(2)} €</strong></p>`;
+
+      block.innerHTML = html;
+      document.querySelectorAll(".section").forEach(s => s.classList.remove("visible"));
+      document.getElementById("uebersicht").classList.add("visible");
     }
 
     function sucheKunde() {
