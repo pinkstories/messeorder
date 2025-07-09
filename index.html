@@ -85,6 +85,196 @@
 </head>
 <body>
   <h1>Messeorder trendset</h1>
-  <!-- HTML content trimmed for brevity -->
+
+  <div id="startScreen" class="visible">
+    <button onclick="zeigeKundendaten(true)">Bestandskunde</button>
+    <button onclick="zeigeKundendaten(false)">Neukunde</button>
+  </div>
+
+  <div id="kundendatenSection" class="section">
+    <h2>Kundendaten</h2>
+    <div id="kundenformular">
+      <label>Firmenname:</label>
+      <input type="text" id="firma" oninput="sucheKunde()" list="firmenliste" />
+      <datalist id="firmenliste"></datalist>
+      <label>Vorname:</label>
+      <input type="text" id="vorname" />
+      <label>Nachname:</label>
+      <input type="text" id="nachname" />
+      <label>Adresse:</label>
+      <input type="text" id="adresse" />
+      <label>PLZ:</label>
+      <input type="text" id="plz" />
+      <label>Ort:</label>
+      <input type="text" id="ort" />
+      <button onclick="zeigeKundenZusammenfassung()">Weiter</button>
+    </div>
+    <div id="kundenausgabe"></div>
+    <button onclick="zurueckZuStart()">Zurück</button>
+  </div>
+
+  <div id="artikelSection" class="section">
+    <h2>Artikel erfassen</h2>
+    <label>Artikelnummer:</label>
+    <input type="text" id="artikelnummer" oninput="sucheArtikel()" placeholder="Artikelnummer eingeben oder scannen" />
+
+    <label>Artikelname:</label>
+    <input type="text" id="artikelname" readonly />
+
+    <label>Anzahl:</label>
+    <input type="number" id="anzahl" placeholder="Menge" min="1" />
+
+    <button onclick="addArticle()">Artikel hinzufügen</button>
+
+    <table id="artikelTabelle">
+      <thead>
+        <tr>
+          <th>Artikelnummer</th>
+          <th>Artikelname</th>
+          <th>Anzahl</th>
+          <th>Einzelpreis (€)</th>
+          <th>Gesamtpreis (€)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h3>Aktueller Auftragswert: <span id="gesamtwert">0.00 €</span></h3>
+    <button onclick="kundeBearbeiten()">Zurück</button>
+  </div>
+
+  <script>
+    let kunden = [], artikel = [], warenkorb = [];
+
+    fetch("kunden.json")
+      .then(res => res.json())
+      .then(data => {
+        kunden = data;
+        const liste = document.getElementById("firmenliste");
+        liste.innerHTML = "";
+        data.forEach(k => {
+          const opt = document.createElement("option");
+          opt.value = k.name;
+          liste.appendChild(opt);
+        });
+      });
+
+    fetch("artikel.json")
+      .then(res => res.json())
+      .then(data => artikel = data);
+
+    function zeigeKundendaten(bestandskunde) {
+      document.querySelectorAll(".section").forEach(s => s.classList.remove("visible"));
+      document.getElementById("kundendatenSection").classList.add("visible");
+      document.getElementById("kundenformular").style.display = "block";
+      document.getElementById("kundenausgabe").style.display = "none";
+    }
+
+    function zurueckZuStart() {
+      document.getElementById("kundendatenSection").classList.remove("visible");
+      document.getElementById("startScreen").classList.add("visible");
+    }
+
+    function sucheKunde() {
+      const name = document.getElementById("firma").value.trim().toLowerCase();
+      const kunde = kunden.find(k => k.name?.toLowerCase() === name);
+      if (kunde) {
+        document.getElementById("vorname").value = kunde.vorname || "";
+        document.getElementById("nachname").value = kunde.nachname || "";
+        document.getElementById("adresse").value = kunde.adresse || kunde.strasse || "";
+        document.getElementById("plz").value = kunde.plz || "";
+        document.getElementById("ort").value = kunde.ort || "";
+      }
+    }
+
+    function zeigeKundenZusammenfassung() {
+      const firma = document.getElementById("firma").value;
+      const vorname = document.getElementById("vorname").value;
+      const nachname = document.getElementById("nachname").value;
+      const adresse = document.getElementById("adresse").value;
+      const plz = document.getElementById("plz").value;
+      const ort = document.getElementById("ort").value;
+      const block = document.getElementById("kundenausgabe");
+
+      document.getElementById("kundenformular").style.display = "none";
+      block.style.display = "block";
+      block.innerHTML = `
+        <p><strong>${firma}</strong><br>${vorname} ${nachname}<br>${adresse}, ${plz} ${ort}</p>
+        <button onclick="kundeBearbeiten()">Kunde ändern</button>
+      `;
+
+      document.querySelectorAll(".section").forEach(s => s.classList.remove("visible"));
+      document.getElementById("artikelSection").classList.add("visible");
+    }
+
+    function kundeBearbeiten() {
+      document.getElementById("kundenformular").style.display = "block";
+      document.getElementById("kundenausgabe").style.display = "none";
+    }
+
+    function sucheArtikel() {
+      const nummer = document.getElementById("artikelnummer").value.trim().toLowerCase();
+      const gefunden = artikel.find(a => a.artikelnummer?.toLowerCase?.() === nummer);
+      if (gefunden) {
+        document.getElementById("artikelname").value = gefunden.name;
+        const einheit = parseInt(gefunden.einheit || 1);
+        document.getElementById("anzahl").value = einheit;
+        setTimeout(() => addArticle(), 300);
+      } else {
+        document.getElementById("artikelname").value = "";
+        document.getElementById("anzahl").value = "";
+      }
+    }
+
+    function addArticle() {
+      const nummer = document.getElementById("artikelnummer").value.trim().toLowerCase();
+      const menge = parseInt(document.getElementById("anzahl").value);
+      const art = artikel.find(a => a.artikelnummer?.toLowerCase?.() === nummer);
+      if (!art || isNaN(menge) || menge <= 0) return;
+
+      const vorhanden = warenkorb.find(p => p.nummer.toLowerCase() === nummer);
+      if (vorhanden) {
+        vorhanden.menge += menge;
+      } else {
+        warenkorb.push({ nummer: art.artikelnummer, name: art.name, menge: menge, preis: parseFloat(art.preis || 0) });
+      }
+
+      aktualisiereTabelle();
+
+      document.getElementById("artikelnummer").value = "";
+      document.getElementById("artikelname").value = "";
+      document.getElementById("anzahl").value = "";
+    }
+
+    function aendereMenge(index, delta) {
+      warenkorb[index].menge += delta;
+      if (warenkorb[index].menge <= 0) warenkorb.splice(index, 1);
+      aktualisiereTabelle();
+    }
+
+    function aktualisiereTabelle() {
+      const tbody = document.querySelector("#artikelTabelle tbody");
+      tbody.innerHTML = "";
+      let gesamt = 0;
+      warenkorb.forEach((art, index) => {
+        const gesamtpreis = art.menge * art.preis;
+        gesamt += gesamtpreis;
+        const zeile = document.createElement("tr");
+        zeile.innerHTML = `
+          <td>${art.nummer}</td>
+          <td>${art.name}</td>
+          <td>
+            <button class="minus" onclick="aendereMenge(${index}, -1)">–</button>
+            ${art.menge}
+            <button class="plus" onclick="aendereMenge(${index}, 1)">+</button>
+          </td>
+          <td>${art.preis.toFixed(2)}</td>
+          <td>${gesamtpreis.toFixed(2)}</td>
+        `;
+        tbody.appendChild(zeile);
+      });
+      document.getElementById("gesamtwert").textContent = `${gesamt.toFixed(2)} €`;
+    }
+  </script>
 </body>
 </html>
