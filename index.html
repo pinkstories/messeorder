@@ -176,20 +176,33 @@
       const menge = parseInt(document.getElementById("anzahl").value);
       const art = artikel.find(a => a.artikelnummer?.toLowerCase?.() === nummer);
       if (!art || isNaN(menge) || menge <= 0) return;
-      const preis = parseFloat(art.preis || 0);
-      warenkorb.push({ nummer: art.artikelnummer, name: art.name, menge: menge, preis: preis });
 
-      const tbody = document.querySelector("#artikelTabelle tbody");
-      const zeile = document.createElement("tr");
-      zeile.innerHTML = `<td>${art.artikelnummer}</td><td>${art.name}</td><td>${menge}</td><td>${preis.toFixed(2)}</td><td>${(menge * preis).toFixed(2)}</td>`;
-      tbody.appendChild(zeile);
+      const vorhanden = warenkorb.find(p => p.nummer.toLowerCase() === nummer);
+      if (vorhanden) {
+        vorhanden.menge += menge;
+      } else {
+        warenkorb.push({ nummer: art.artikelnummer, name: art.name, menge: menge, preis: parseFloat(art.preis || 0) });
+      }
 
-      const gesamt = warenkorb.reduce((sum, a) => sum + a.menge * a.preis, 0);
-      document.getElementById("gesamtwert").textContent = `${gesamt.toFixed(2)} €`;
+      aktualisiereTabelle();
 
       document.getElementById("artikelnummer").value = "";
       document.getElementById("artikelname").value = "";
       document.getElementById("anzahl").value = "";
+    }
+
+    function aktualisiereTabelle() {
+      const tbody = document.querySelector("#artikelTabelle tbody");
+      tbody.innerHTML = "";
+      let gesamt = 0;
+      warenkorb.forEach(art => {
+        const zeile = document.createElement("tr");
+        const gesamtpreis = art.menge * art.preis;
+        gesamt += gesamtpreis;
+        zeile.innerHTML = `<td>${art.nummer}</td><td>${art.name}</td><td>${art.menge}</td><td>${art.preis.toFixed(2)}</td><td>${gesamtpreis.toFixed(2)}</td>`;
+        tbody.appendChild(zeile);
+      });
+      document.getElementById("gesamtwert").textContent = `${gesamt.toFixed(2)} €`;
     }
   </script>
 </body>
