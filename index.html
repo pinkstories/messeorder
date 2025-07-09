@@ -70,7 +70,8 @@
   <div id="kundendatenSection" class="section">
     <h2>Kundendaten</h2>
     <label>Firmenname:</label>
-    <input type="text" id="firma" />
+    <input type="text" id="firma" oninput="sucheKunde()" list="firmenliste" />
+    <datalist id="firmenliste"></datalist>
     <label>Vorname:</label>
     <input type="text" id="vorname" />
     <label>Nachname:</label>
@@ -118,7 +119,15 @@
 
     fetch("kunden.json")
       .then(res => res.json())
-      .then(data => kunden = data)
+      .then(data => {
+        kunden = data;
+        const liste = document.getElementById("firmenliste");
+        data.forEach(k => {
+          const opt = document.createElement("option");
+          opt.value = k.name;
+          liste.appendChild(opt);
+        });
+      })
       .catch(() => alert("❌ Fehler beim Laden der Kundenliste."));
 
     fetch("artikel.json")
@@ -134,6 +143,18 @@
     function zeigeArtikelSection() {
       document.getElementById("kundendatenSection").classList.remove("visible");
       document.getElementById("artikelSection").classList.add("visible");
+    }
+
+    function sucheKunde() {
+      const name = document.getElementById("firma").value.trim().toLowerCase();
+      const kunde = kunden.find(k => k.name?.toLowerCase() === name);
+      if (kunde) {
+        document.getElementById("vorname").value = kunde.vorname || "";
+        document.getElementById("nachname").value = kunde.nachname || "";
+        document.getElementById("adresse").value = kunde.strasse || "";
+        document.getElementById("plz").value = kunde.plz || "";
+        document.getElementById("ort").value = kunde.ort || "";
+      }
     }
 
     function sucheArtikel() {
