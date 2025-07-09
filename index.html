@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Messe-Auftragserfassung</title>
+  <title>Messeorder trendset</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -41,7 +41,7 @@
     th, td {
       border: 1px solid #ccc;
       padding: 0.5rem;
-      text-align: left;
+      text-align: center;
     }
     th {
       background-color: #ffe5ea;
@@ -58,10 +58,12 @@
     #fortschrittBalken {
       background: #d14e67;
     }
+    .plus { background-color: #4caf50; color: white; border: none; padding: 0.2rem 0.6rem; margin: 0 0.25rem; border-radius: 4px; }
+    .minus { background-color: #f44336; color: white; border: none; padding: 0.2rem 0.6rem; margin: 0 0.25rem; border-radius: 4px; }
   </style>
 </head>
 <body>
-  <h1>Willkommen zur Auftragserfassung</h1>
+  <h1>Messeorder trendset</h1>
   <div id="startScreen" class="visible">
     <button onclick="zeigeKundendaten(true)">Bestandskunde</button>
     <button onclick="zeigeKundendaten(false)">Neukunde</button>
@@ -69,20 +71,24 @@
 
   <div id="kundendatenSection" class="section">
     <h2>Kundendaten</h2>
-    <label>Firmenname:</label>
-    <input type="text" id="firma" oninput="sucheKunde()" list="firmenliste" />
-    <datalist id="firmenliste"></datalist>
-    <label>Vorname:</label>
-    <input type="text" id="vorname" />
-    <label>Nachname:</label>
-    <input type="text" id="nachname" />
-    <label>Adresse:</label>
-    <input type="text" id="adresse" />
-    <label>PLZ:</label>
-    <input type="text" id="plz" />
-    <label>Ort:</label>
-    <input type="text" id="ort" />
-    <button onclick="zeigeArtikelSection()">Weiter</button>
+    <div id="kundenformular">
+      <label>Firmenname:</label>
+      <input type="text" id="firma" oninput="sucheKunde()" list="firmenliste" />
+      <datalist id="firmenliste"></datalist>
+      <label>Vorname:</label>
+      <input type="text" id="vorname" />
+      <label>Nachname:</label>
+      <input type="text" id="nachname" />
+      <label>Adresse:</label>
+      <input type="text" id="adresse" />
+      <label>PLZ:</label>
+      <input type="text" id="plz" />
+      <label>Ort:</label>
+      <input type="text" id="ort" />
+      <button onclick="zeigeArtikelSection()">Weiter</button>
+    </div>
+    <div id="kundenzusammenfassung" style="display:none;"></div>
+    <button onclick="zurueckZuStart()">Zurück</button>
   </div>
 
   <div id="artikelSection" class="section">
@@ -112,6 +118,7 @@
     </table>
 
     <h3>Aktueller Auftragswert: <span id="gesamtwert">0.00 €</span></h3>
+    <button onclick="zeigeKundendaten(true)">Zurück</button>
   </div>
 
   <script>
@@ -127,20 +134,34 @@
           opt.value = k.name;
           liste.appendChild(opt);
         });
-      })
-      .catch(() => alert("❌ Fehler beim Laden der Kundenliste."));
+      });
 
     fetch("artikel.json")
       .then(res => res.json())
-      .then(data => artikel = data)
-      .catch(() => alert("❌ Fehler beim Laden der Artikelliste."));
+      .then(data => artikel = data);
 
     function zeigeKundendaten(bestandskunde) {
       document.getElementById("startScreen").classList.remove("visible");
       document.getElementById("kundendatenSection").classList.add("visible");
+      document.getElementById("kundenformular").style.display = "block";
+      document.getElementById("kundenzusammenfassung").style.display = "none";
+    }
+
+    function zurueckZuStart() {
+      document.getElementById("kundendatenSection").classList.remove("visible");
+      document.getElementById("startScreen").classList.add("visible");
     }
 
     function zeigeArtikelSection() {
+      const firma = document.getElementById("firma").value;
+      const vorname = document.getElementById("vorname").value;
+      const nachname = document.getElementById("nachname").value;
+      const adresse = document.getElementById("adresse").value;
+      const plz = document.getElementById("plz").value;
+      const ort = document.getElementById("ort").value;
+      document.getElementById("kundenformular").style.display = "none";
+      document.getElementById("kundenzusammenfassung").style.display = "block";
+      document.getElementById("kundenzusammenfassung").innerHTML = `<p><strong>${firma}</strong><br>${vorname} ${nachname}<br>${adresse}, ${plz} ${ort}</p>`;
       document.getElementById("kundendatenSection").classList.remove("visible");
       document.getElementById("artikelSection").classList.add("visible");
     }
@@ -209,9 +230,9 @@
           <td>${art.nummer}</td>
           <td>${art.name}</td>
           <td>
-            <button onclick="aendereMenge(${index}, -1)">–</button>
+            <button class="minus" onclick="aendereMenge(${index}, -1)">–</button>
             ${art.menge}
-            <button onclick="aendereMenge(${index}, 1)">+</button>
+            <button class="plus" onclick="aendereMenge(${index}, 1)">+</button>
           </td>
           <td>${art.preis.toFixed(2)}</td>
           <td>${gesamtpreis.toFixed(2)}</td>
