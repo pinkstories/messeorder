@@ -35,7 +35,7 @@
   <div id="kundendaten" class="section">
     <div id="bestandskundeSection">
   <label>Bestandskunde suchen:</label>
-  <input type="text" id="kundensuche" oninput="filterKunden()" placeholder="Kunde suchen..." />
+  <input type="text" id="kundensuche" oninput="filterKunden()" onkeydown="if(event.key === 'Enter'){event.preventDefault(); filterKunden();}" placeholder="Kunde suchen..." />
   <select id="kundeSelect" onchange="fuelleKundendaten()">
     <option value="">Kunde auswählen</option>
   </select>
@@ -178,6 +178,13 @@ function filterKunden() {
     opt.textContent = k.name.replace(/^\*/, '').trim();
     select.appendChild(opt);
   });
+
+  // Automatisch auswählen, wenn genau ein Treffer
+  if (gefiltert.length === 1) {
+    select.selectedIndex = 1;
+    fuelleKundendaten();
+  }
+}
 }
 
 function fuelleKundendaten() {
