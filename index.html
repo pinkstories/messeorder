@@ -204,8 +204,77 @@ function fuelleKundendaten() {
   }
 }
 </script>
+<div id="checkBereich" style="margin-top:2rem; font-size:0.9rem; color:#999; text-align:center;">
+  <button onclick="checkStatus()">🔍 Check Kundenliste</button>
+  <div id="checkErgebnis" style="margin-top:0.5rem;"></div>
+</div>
+
+<script>
+function checkStatus() {
+  const info = document.getElementById("checkErgebnis");
+  info.textContent = "Prüfe Verbindung zu kunden.json ...";
+  fetch("kunden.json")
+    .then(res => {
+      if (!res.ok) throw new Error("Status " + res.status);
+      return res.json();
+    })
+    .then(data => {
+      if (Array.isArray(data) && data.length > 0) {
+        info.style.color = "green";
+        info.textContent = `✅ ${data.length} Kunden geladen.`;
+        window._kunden_ok = true;
+        hideCheckButtonsIfReady();
+      } else {
+        info.style.color = "orange";
+        info.textContent = "⚠️ Datei geladen, aber keine Kunden gefunden.";
+      }
+    })
+    .catch(err => {
+      info.style.color = "red";
+      info.textContent = `❌ Fehler beim Laden von kunden.json: ${err.message}`;
+    });
+}
+
+function checkArtikel() {
+  const info = document.getElementById("checkErgebnis");
+  info.textContent = "Prüfe Verbindung zu artikel.json ...";
+  fetch("artikel.json")
+    .then(res => {
+      if (!res.ok) throw new Error("Status " + res.status);
+      return res.json();
+    })
+    .then(data => {
+      if (Array.isArray(data) && data.length > 0) {
+        info.style.color = "green";
+        info.textContent = `✅ ${data.length} Artikel geladen.`;
+        window._artikel_ok = true;
+        hideCheckButtonsIfReady();
+      } else {
+        info.style.color = "orange";
+        info.textContent = "⚠️ Datei geladen, aber keine Artikel gefunden.";
+      }
+    })
+    .catch(err => {
+      info.style.color = "red";
+      info.textContent = `❌ Fehler beim Laden von artikel.json: ${err.message}`;
+    });
+}
+
+function hideCheckButtonsIfReady() {
+  if (window._kunden_ok && window._artikel_ok) {
+    const checkDiv = document.getElementById("checkBereich");
+    if (checkDiv) checkDiv.style.display = "none";
+  }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  checkStatus();
+  checkArtikel();
+});
+</script>
 <div style="margin-top:2rem; font-size:0.9rem; color:#999; text-align:center;">
   <button onclick="checkStatus()">🔍 Check Kundenliste</button>
+  <button onclick="checkArtikel()">📦 Check Artikelliste</button>
   <div id="checkErgebnis" style="margin-top:0.5rem;"></div>
 </div>
 
@@ -230,6 +299,29 @@ function checkStatus() {
     .catch(err => {
       info.style.color = "red";
       info.textContent = `❌ Fehler beim Laden von kunden.json: ${err.message}`;
+    });
+}
+
+function checkArtikel() {
+  const info = document.getElementById("checkErgebnis");
+  info.textContent = "Prüfe Verbindung zu artikel.json ...";
+  fetch("artikel.json")
+    .then(res => {
+      if (!res.ok) throw new Error("Status " + res.status);
+      return res.json();
+    })
+    .then(data => {
+      if (Array.isArray(data) && data.length > 0) {
+        info.style.color = "green";
+        info.textContent = `✅ ${data.length} Artikel geladen.`;
+      } else {
+        info.style.color = "orange";
+        info.textContent = "⚠️ Datei geladen, aber keine Artikel gefunden.";
+      }
+    })
+    .catch(err => {
+      info.style.color = "red";
+      info.textContent = `❌ Fehler beim Laden von artikel.json: ${err.message}`;
     });
 }
 </script>
