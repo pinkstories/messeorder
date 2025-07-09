@@ -54,10 +54,19 @@
     }
     .plus { background-color: #4caf50; color: white; border: none; padding: 0.2rem 0.6rem; margin: 0 0.25rem; border-radius: 4px; }
     .minus { background-color: #f44336; color: white; border: none; padding: 0.2rem 0.6rem; margin: 0 0.25rem; border-radius: 4px; }
+    #kundenausgabe {
+      margin: 1rem 0;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fff0f4;
+      display: none;
+    }
   </style>
 </head>
 <body>
   <h1>Messeorder trendset</h1>
+  <div id="kundenausgabe"></div>
   <div id="startScreen" class="visible">
     <button onclick="zeigeKundendaten(true)">Bestandskunde</button>
     <button onclick="zeigeKundendaten(false)">Neukunde</button>
@@ -153,12 +162,17 @@
       const adresse = document.getElementById("adresse").value;
       const plz = document.getElementById("plz").value;
       const ort = document.getElementById("ort").value;
+
       document.getElementById("kundenformular").style.display = "none";
       document.getElementById("kundenzusammenfassung").style.display = "block";
       document.getElementById("kundenzusammenfassung").innerHTML = `<p><strong>${firma}</strong><br>${vorname} ${nachname}<br>${adresse}, ${plz} ${ort}</p>`;
+
       document.getElementById("kundendatenSection").classList.remove("visible");
       document.getElementById("artikelSection").classList.add("visible");
+
       document.getElementById("startScreen").style.display = "none";
+      document.getElementById("kundenausgabe").style.display = "block";
+      document.getElementById("kundenausgabe").innerHTML = `<strong>${firma}</strong><br>${vorname} ${nachname}<br>${adresse}<br>${plz} ${ort}`;
     }
 
     function sucheKunde() {
