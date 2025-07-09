@@ -151,7 +151,7 @@
       if (kunde) {
         document.getElementById("vorname").value = kunde.vorname || "";
         document.getElementById("nachname").value = kunde.nachname || "";
-        document.getElementById("adresse").value = kunde.strasse || "";
+        document.getElementById("adresse").value = kunde.adresse || kunde.strasse || "";
         document.getElementById("plz").value = kunde.plz || "";
         document.getElementById("ort").value = kunde.ort || "";
       }
@@ -159,21 +159,21 @@
 
     function sucheArtikel() {
       const nummer = document.getElementById("artikelnummer").value.trim().toLowerCase();
-      const gefunden = artikel.find(a => a.Artikelnummer?.toLowerCase?.() === nummer);
-      document.getElementById("artikelname").value = gefunden ? gefunden.Artikelname : "";
+      const gefunden = artikel.find(a => a.artikelnummer?.toLowerCase?.() === nummer);
+      document.getElementById("artikelname").value = gefunden ? gefunden.name : "";
     }
 
     function addArticle() {
       const nummer = document.getElementById("artikelnummer").value.trim().toLowerCase();
       const menge = parseInt(document.getElementById("anzahl").value);
-      const art = artikel.find(a => a.Artikelnummer?.toLowerCase?.() === nummer);
+      const art = artikel.find(a => a.artikelnummer?.toLowerCase?.() === nummer);
       if (!art || isNaN(menge) || menge <= 0) return;
-      const preis = parseFloat(art.Einzelpreis || 0);
-      warenkorb.push({ nummer: art.Artikelnummer, name: art.Artikelname, menge: menge, preis: preis });
+      const preis = parseFloat(art.preis || 0);
+      warenkorb.push({ nummer: art.artikelnummer, name: art.name, menge: menge, preis: preis });
 
       const tbody = document.querySelector("#artikelTabelle tbody");
       const zeile = document.createElement("tr");
-      zeile.innerHTML = `<td>${art.Artikelnummer}</td><td>${art.Artikelname}</td><td>${menge}</td><td>${preis.toFixed(2)}</td><td>${(menge * preis).toFixed(2)}</td>`;
+      zeile.innerHTML = `<td>${art.artikelnummer}</td><td>${art.name}</td><td>${menge}</td><td>${preis.toFixed(2)}</td><td>${(menge * preis).toFixed(2)}</td>`;
       tbody.appendChild(zeile);
 
       const gesamt = warenkorb.reduce((sum, a) => sum + a.menge * a.preis, 0);
