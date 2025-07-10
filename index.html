@@ -12,9 +12,32 @@
       padding: 1rem;
       background-color: #fff8f4;
       color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     h1, h2 {
       color: #d14e67;
+    }
+    .container {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+      .container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .section {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .section h2 {
+      margin-top: 0;
+      border-bottom: 2px solid #d14e67;
+      padding-bottom: 0.5rem;
     }
     input, textarea, select, button {
       width: 100%;
@@ -24,73 +47,252 @@
       border-radius: 6px;
       border: 1px solid #ccc;
       font-family: 'Montserrat', sans-serif;
+      box-sizing: border-box;
     }
     button {
       background-color: #d14e67;
       color: white;
       border: none;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
     button:hover {
       background-color: #b84358;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    .btn-secondary {
+      background-color: #666;
+    }
+    .btn-secondary:hover {
+      background-color: #555;
+    }
+    .btn-success {
+      background-color: #4caf50;
+    }
+    .btn-success:hover {
+      background-color: #45a049;
+    }
+    .btn-danger {
+      background-color: #f44336;
+    }
+    .btn-danger:hover {
+      background-color: #da190b;
+    }
+    .btn-small {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+      width: auto;
+      margin: 0 0.25rem;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .form-row > * {
+      flex: 1;
     }
     table {
       width: 100%;
       margin-top: 1rem;
       border-collapse: collapse;
+      font-size: 0.9rem;
     }
     th, td {
       border: 1px solid #ccc;
-      padding: 0.3rem;
-      text-align: center;
-      vertical-align: middle;
+      padding: 0.5rem;
+      text-align: left;
     }
     th {
       background-color: #ffe5ea;
+      font-weight: 600;
     }
-    .section {
-      display: none;
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .cart-full-width {
+      grid-column: 1 / -1;
     }
-    .visible {
-      display: block;
-    }
-    .plus, .minus {
-      font-size: 0.8rem;
-      padding: 0.2rem 0.4rem;
-      border: none;
-      border-radius: 4px;
-    }
-    .plus {
-      background-color: #4caf50;
-      color: white;
-      margin-left: 0.5rem;
-    }
-    .minus {
-      background-color: #f44336;
-      color: white;
-      margin-right: 0.5rem;
-    }
-    #kundenausgabe {
-      margin: 1rem 0;
-      padding: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background: #fff0f4;
-      display: none;
-    }
-    #kundenausgabe button {
-      margin-top: 0.5rem;
-      background-color: #666;
-    }
-    #testausgabe {
-      margin-top: 2rem;
+    .error {
+      color: #f44336;
       font-size: 0.9rem;
-      color: #666;
+      margin-top: 0.25rem;
+    }
+    .success {
+      color: #4caf50;
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+    }
+    .customer-display {
+      background: #e8f5e8;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+    .total-display {
+      background: #f0f8ff;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-top: 1rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .info-box {
+      background: #e6f3ff;
+      border: 1px solid #b3d9ff;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 767px) {
+      body {
+        padding: 0.5rem;
+      }
+      .form-row {
+        flex-direction: column;
+      }
+      table {
+        font-size: 0.8rem;
+      }
+      th, td {
+        padding: 0.25rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Messeorder trendset</h1>
-  <div id="testausgabe"></div>
+  <!-- Local Testing Instructions -->
+  <!-- 
+    Lokales Testen:
+    1. Starten Sie einen lokalen Webserver im Projektverzeichnis:
+       python -m http.server 8000
+       oder
+       python3 -m http.server 8000
+    2. Öffnen Sie http://localhost:8000 in Ihrem Browser
+    3. Die Anwendung lädt automatisch kunden.json und artikel.json
+  -->
+
+  <h1>🛍️ Messeorder trendset</h1>
+  
+  <div class="info-box">
+    <strong>📖 Anleitung:</strong> Wählen oder erstellen Sie einen Kunden, fügen Sie Artikel über die Artikelnummer hinzu und verwalten Sie den Warenkorb. Am Ende können Sie die Bestellung anzeigen.
+  </div>
+
+  <div class="container">
+    <!-- Customer Section -->
+    <div class="section">
+      <h2>👤 Kunde</h2>
+      
+      <div class="form-group">
+        <input type="text" id="customerSearch" placeholder="Kundenname suchen...">
+        <button onclick="searchCustomer()">Kunde suchen</button>
+      </div>
+
+      <div id="customerSearchResults"></div>
+
+      <div id="selectedCustomer" style="display: none;">
+        <div class="customer-display">
+          <h3>Ausgewählter Kunde:</h3>
+          <div id="customerInfo"></div>
+          <button class="btn-secondary" onclick="clearCustomer()">Anderen Kunden wählen</button>
+        </div>
+      </div>
+
+      <div id="newCustomerForm">
+        <h3>Neuen Kunden anlegen</h3>
+        <div class="form-group">
+          <input type="text" id="newCustomerName" placeholder="Firmenname *" required>
+          <div class="error" id="nameError"></div>
+        </div>
+        <div class="form-row">
+          <input type="text" id="newCustomerStreet" placeholder="Straße">
+          <input type="text" id="newCustomerZip" placeholder="PLZ">
+        </div>
+        <div class="form-row">
+          <input type="text" id="newCustomerCity" placeholder="Ort">
+          <input type="email" id="newCustomerEmail" placeholder="E-Mail">
+        </div>
+        <div class="form-group">
+          <input type="tel" id="newCustomerPhone" placeholder="Telefon">
+        </div>
+        <button onclick="createCustomer()">Neuen Kunden anlegen</button>
+        <div id="customerMessage"></div>
+      </div>
+    </div>
+
+    <!-- Articles Section -->
+    <div class="section">
+      <h2>📦 Artikel</h2>
+      
+      <div class="form-group">
+        <div class="form-row">
+          <input type="text" id="articleNumber" placeholder="Artikelnummer eingeben">
+          <input type="number" id="articleQuantity" placeholder="Menge" min="1" value="1">
+        </div>
+        <button onclick="addArticle()">Artikel hinzufügen</button>
+        <div id="articleMessage"></div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" id="articleSearch" placeholder="Artikel nach Name suchen...">
+        <button onclick="searchArticle()">Artikel suchen</button>
+      </div>
+
+      <div id="articleSearchResults"></div>
+    </div>
+
+    <!-- Shopping Cart Section -->
+    <div class="section cart-full-width">
+      <h2>🛒 Warenkorb</h2>
+      
+      <div id="cartEmpty" style="display: block;">
+        <p>Der Warenkorb ist leer. Fügen Sie Artikel hinzu, um zu beginnen.</p>
+      </div>
+
+      <div id="cartContent" style="display: none;">
+        <table id="cartTable">
+          <thead>
+            <tr>
+              <th>Artikel-Nr.</th>
+              <th>Bezeichnung</th>
+              <th>Menge</th>
+              <th>Einheit</th>
+              <th>Einzelpreis</th>
+              <th>Gesamt</th>
+              <th>Aktionen</th>
+            </tr>
+          </thead>
+          <tbody id="cartItems">
+          </tbody>
+        </table>
+
+        <div class="total-display">
+          <div class="text-right">
+            Gesamtsumme: <span id="totalAmount">0,00</span> €
+          </div>
+        </div>
+
+        <div class="form-row">
+          <button class="btn-danger" onclick="clearCart()">Warenkorb leeren</button>
+          <button class="btn-success" onclick="showOrder()" id="showOrderBtn" disabled>Bestellung anzeigen</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Summary Section -->
+    <div class="section cart-full-width" id="orderSummary" style="display: none;">
+      <h2>📋 Bestellübersicht</h2>
+      <div id="orderContent"></div>
+      <button class="btn-secondary" onclick="hideOrder()">Zurück zum Warenkorb</button>
+      <button onclick="printOrder()">Bestellung drucken</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
