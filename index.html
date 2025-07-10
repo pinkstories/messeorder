@@ -7,90 +7,474 @@
   <title>Messeorder trendset</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+    
     body {
       font-family: 'Montserrat', sans-serif;
+      margin: 0;
       padding: 1rem;
       background-color: #fff8f4;
       color: #333;
+      line-height: 1.6;
     }
-    h1, h2 {
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #d14e67;
+    }
+    
+    h1 {
       color: #d14e67;
+      margin-bottom: 0.5rem;
     }
+    
+    h2 {
+      color: #d14e67;
+      border-bottom: 1px solid #d14e67;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+    }
+    
+    .test-info {
+      background-color: #e8f5e8;
+      border: 1px solid #4caf50;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+    
+    .test-info strong {
+      color: #2e7d32;
+    }
+    
+    .section {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #555;
+    }
+    
     input, textarea, select, button {
       width: 100%;
-      margin: 0.5rem 0;
       padding: 0.75rem;
       font-size: 1rem;
       border-radius: 6px;
       border: 1px solid #ccc;
       font-family: 'Montserrat', sans-serif;
     }
+    
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #d14e67;
+      box-shadow: 0 0 0 2px rgba(209, 78, 103, 0.2);
+    }
+    
     button {
       background-color: #d14e67;
       color: white;
       border: none;
       cursor: pointer;
+      margin: 0.25rem;
+      transition: background-color 0.3s ease;
     }
+    
     button:hover {
       background-color: #b84358;
     }
-    table {
+    
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    
+    .btn-secondary {
+      background-color: #6c757d;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #545b62;
+    }
+    
+    .btn-success {
+      background-color: #28a745;
+    }
+    
+    .btn-success:hover {
+      background-color: #218838;
+    }
+    
+    .btn-danger {
+      background-color: #dc3545;
+    }
+    
+    .btn-danger:hover {
+      background-color: #c82333;
+    }
+    
+    .flex-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .flex-row > * {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .search-results {
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-top: 0.5rem;
+    }
+    
+    .search-result-item {
+      padding: 0.75rem;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    
+    .search-result-item:hover {
+      background-color: #f8f9fa;
+    }
+    
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+    
+    .customer-info {
+      background-color: #e3f2fd;
+      border: 1px solid #2196f3;
+      border-radius: 6px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .cart-table {
       width: 100%;
-      margin-top: 1rem;
       border-collapse: collapse;
+      margin-top: 1rem;
     }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 0.3rem;
+    
+    .cart-table th,
+    .cart-table td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    
+    .cart-table th {
+      background-color: #f8f9fa;
+      font-weight: 600;
+    }
+    
+    .cart-table .text-right {
+      text-align: right;
+    }
+    
+    .cart-table .text-center {
       text-align: center;
-      vertical-align: middle;
     }
-    th {
-      background-color: #ffe5ea;
+    
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-    .section {
+    
+    .quantity-btn {
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .quantity-input {
+      width: 60px;
+      text-align: center;
+      padding: 0.25rem;
+    }
+    
+    .error-message {
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+      padding: 0.75rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+    
+    .success-message {
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+      padding: 0.75rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+    
+    .hidden {
       display: none;
     }
-    .visible {
-      display: block;
+    
+    .cart-summary {
+      background-color: #fff3cd;
+      border: 1px solid #ffeaa7;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 1rem;
     }
-    .plus, .minus {
-      font-size: 0.8rem;
-      padding: 0.2rem 0.4rem;
-      border: none;
-      border-radius: 4px;
+    
+    .cart-empty {
+      text-align: center;
+      color: #666;
+      font-style: italic;
+      padding: 2rem;
     }
-    .plus {
-      background-color: #4caf50;
-      color: white;
+    
+    .order-summary {
+      background-color: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 0.5rem;
+      }
+      
+      .flex-row {
+        flex-direction: column;
+      }
+      
+      .flex-row > * {
+        min-width: auto;
+      }
+      
+      .cart-table {
+        font-size: 0.9rem;
+      }
+      
+      .cart-table th,
+      .cart-table td {
+        padding: 0.5rem;
+      }
+      
+      .quantity-controls {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+      
+      .quantity-btn {
+        width: 25px;
+        height: 25px;
+        font-size: 0.7rem;
+      }
+      
+      .quantity-input {
+        width: 50px;
+      }
+    }
+    
+    .loading {
+      display: inline-block;
       margin-left: 0.5rem;
     }
-    .minus {
-      background-color: #f44336;
-      color: white;
-      margin-right: 0.5rem;
+    
+    .spinner {
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #d14e67;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
     }
-    #kundenausgabe {
-      margin: 1rem 0;
-      padding: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background: #fff0f4;
-      display: none;
-    }
-    #kundenausgabe button {
-      margin-top: 0.5rem;
-      background-color: #666;
-    }
-    #testausgabe {
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      color: #666;
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
-  <h1>Messeorder trendset</h1>
-  <div id="testausgabe"></div>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>Messeorder trendset</h1>
+      <p>Bestellverwaltung für Messekunden</p>
+    </div>
+
+    <!-- Testing Instructions -->
+    <div class="test-info">
+      <strong>💡 Lokaler Test:</strong> Diese Anwendung benötigt einen HTTP-Server. 
+      Starten Sie mit <code>python -m http.server</code> (Python 3) oder <code>python -m SimpleHTTPServer</code> (Python 2) 
+      im Projektverzeichnis und öffnen Sie <code>http://localhost:8000</code>
+    </div>
+
+    <!-- Error/Success Messages -->
+    <div id="message-container"></div>
+
+    <!-- Customer Section -->
+    <div class="section">
+      <h2>1. Kundenauswahl</h2>
+      
+      <div class="form-group">
+        <label for="customer-search">Kunde suchen:</label>
+        <input type="text" id="customer-search" placeholder="Name, E-Mail oder Ort eingeben..." />
+        <div id="search-results" class="search-results hidden"></div>
+      </div>
+      
+      <div class="flex-row">
+        <button type="button" id="new-customer-btn">Neuen Kunden anlegen</button>
+        <button type="button" id="clear-customer-btn" class="btn-secondary">Kundenauswahl zurücksetzen</button>
+      </div>
+
+      <!-- New Customer Form -->
+      <div id="new-customer-form" class="hidden">
+        <h3>Neuen Kunden anlegen</h3>
+        <div class="flex-row">
+          <div class="form-group">
+            <label for="new-customer-name">Firmenname: *</label>
+            <input type="text" id="new-customer-name" required />
+          </div>
+          <div class="form-group">
+            <label for="new-customer-email">E-Mail:</label>
+            <input type="email" id="new-customer-email" />
+          </div>
+        </div>
+        <div class="flex-row">
+          <div class="form-group">
+            <label for="new-customer-street">Straße:</label>
+            <input type="text" id="new-customer-street" />
+          </div>
+          <div class="form-group">
+            <label for="new-customer-phone">Telefon:</label>
+            <input type="tel" id="new-customer-phone" />
+          </div>
+        </div>
+        <div class="flex-row">
+          <div class="form-group">
+            <label for="new-customer-zip">PLZ:</label>
+            <input type="text" id="new-customer-zip" />
+          </div>
+          <div class="form-group">
+            <label for="new-customer-city">Ort:</label>
+            <input type="text" id="new-customer-city" />
+          </div>
+        </div>
+        <div class="flex-row">
+          <button type="button" id="save-customer-btn" class="btn-success">Kunde speichern</button>
+          <button type="button" id="cancel-customer-btn" class="btn-secondary">Abbrechen</button>
+        </div>
+      </div>
+
+      <!-- Selected Customer Display -->
+      <div id="selected-customer" class="customer-info hidden">
+        <h3>Ausgewählter Kunde:</h3>
+        <div id="customer-details"></div>
+      </div>
+    </div>
+
+    <!-- Articles Section -->
+    <div class="section">
+      <h2>2. Artikel hinzufügen</h2>
+      
+      <div class="flex-row">
+        <div class="form-group">
+          <label for="article-number">Artikelnummer:</label>
+          <input type="text" id="article-number" placeholder="z.B. 1002" />
+        </div>
+        <div class="form-group">
+          <label for="article-quantity">Menge:</label>
+          <input type="number" id="article-quantity" min="1" value="1" />
+        </div>
+      </div>
+      
+      <button type="button" id="add-article-btn">Artikel hinzufügen</button>
+      
+      <div id="article-info" class="hidden">
+        <h3>Artikel gefunden:</h3>
+        <div id="article-details"></div>
+      </div>
+    </div>
+
+    <!-- Shopping Cart Section -->
+    <div class="section">
+      <h2>3. Warenkorb</h2>
+      
+      <div id="cart-content">
+        <div class="cart-empty">
+          Der Warenkorb ist leer. Fügen Sie Artikel hinzu, um mit der Bestellung zu beginnen.
+        </div>
+      </div>
+      
+      <div id="cart-summary" class="cart-summary hidden">
+        <div class="flex-row">
+          <div><strong>Gesamtanzahl Artikel:</strong> <span id="total-items">0</span></div>
+          <div><strong>Gesamtpreis:</strong> <span id="total-price">0,00 €</span></div>
+        </div>
+      </div>
+      
+      <div class="flex-row">
+        <button type="button" id="clear-cart-btn" class="btn-danger">Warenkorb leeren</button>
+        <button type="button" id="proceed-order-btn" class="btn-success" disabled>Zur Bestellübersicht</button>
+      </div>
+    </div>
+
+    <!-- Order Summary Section -->
+    <div class="section hidden" id="order-section">
+      <h2>4. Bestellübersicht</h2>
+      
+      <div id="order-summary" class="order-summary">
+        <!-- Order summary will be populated here -->
+      </div>
+      
+      <div class="flex-row">
+        <button type="button" id="back-to-cart-btn" class="btn-secondary">Zurück zum Warenkorb</button>
+        <button type="button" id="complete-order-btn" class="btn-success">Bestellung abschließen</button>
+      </div>
+    </div>
+
+    <!-- Final Confirmation -->
+    <div class="section hidden" id="confirmation-section">
+      <h2>✅ Bestellung erfolgreich erstellt</h2>
+      <p>Ihre Bestellung wurde erfolgreich erstellt und kann nun verarbeitet werden.</p>
+      
+      <button type="button" id="new-order-btn" class="btn-success">Neue Bestellung starten</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
